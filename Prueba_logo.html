@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuxCityViajes</title>
+  <style>
+    body {
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Dancing Script', 'Brush Script MT', cursive, sans-serif;
+    }
+    .logo-container {
+      position: relative;
+      color: #d4af37; /* oro */
+      text-align: center;
+      letter-spacing: 2px;
+      font-size: 6rem;
+    }
+    .route-line {
+      position: absolute;
+      height: 4px;
+      background: white; /* blanco puro → invisible sobre fondo blanco */
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+    .line-top {
+      top: 40%;
+    }
+    .line-bottom {
+      bottom: 43%;
+      top: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <div class="route-line line-top"></div>
+    <div>LuxCityViajes</div>
+    <div class="route-line line-bottom"></div>
+  </div>
+</body>
+</html>
