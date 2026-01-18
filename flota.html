@@ -256,4 +256,18 @@
 
     function autoSiguiente() {
       indiceActual = (indiceActual + 1) % flota.length;
-      mostrar
+      mostrarAuto(indiceActual);
+    }
+
+    // Iniciar
+    crearIndicadores();
+
+    setTimeout(() => {
+      galeria.style.display = 'none';
+      carrusel.style.display = 'flex';
+      mostrarAuto(0);
+      setInterval(autoSiguiente, 10000);
+    }, 10000);
+  </script>
+</body>
+</html>
