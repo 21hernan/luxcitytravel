@@ -6,48 +6,70 @@
   <title>Lux City Travel - Flota</title>
   <link rel="stylesheet" href="css/estilos.css">
   <style>
-    /* Galería inicial */
-    .galeria-inicial {
+    .layout-doble {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 2rem;
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
     }
 
-    .item-galeria {
+    .columna-izquierda {
+      flex: 0 0 50%; /* más ancho */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+      gap: 1.4rem;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 1rem;
+      justify-items: center; /* centra cada item */
+    }
+
+    .mini-auto {
       text-align: center;
-      max-width: 160px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 240px; /* más ancho */
     }
 
-    .item-galeria img {
+    .mini-auto img {
       width: 100%;
-      height: auto;
+      height: 120px;
+      object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .item-galeria p {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #444;
+    .mini-auto .nombre {
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      color: #2c3e50;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Carrusel - contenedor con altura fija para evitar scroll */
-    .carrusel-contenedor {
-      display: none;
-      max-width: 500px;
-      margin: 2rem auto;
-      text-align: center;
-      min-height: 500px; /* ← evita cambios de altura */
+    .columna-derecha {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 600px;
+    }
+
+    .contenedor-carrusel {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
     .auto-imagen {
-      width: 90%;
-      height: auto;
+      width: 100%;
+      height: 350px;
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       opacity: 0;
@@ -62,7 +84,7 @@
 
     .nombre-auto {
       margin-top: 1.2rem;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #2c3e50;
       opacity: 0;
@@ -82,14 +104,13 @@
       line-height: 1.6;
       color: #555;
       opacity: 0;
-      transition: opacity 0.6s ease 0.2s; /* ligero retraso */
+      transition: opacity 0.6s ease 0.2s;
     }
 
     .caracteristicas.visible {
       opacity: 1;
     }
 
-    /* Indicadores */
     .indicadores {
       margin-top: 1.5rem;
       display: flex;
@@ -109,6 +130,19 @@
     .circulo.activo {
       background: #d4af37;
     }
+
+    @media (max-width: 900px) {
+      .layout-doble {
+        flex-direction: column;
+      }
+      .columna-izquierda {
+        flex: none;
+        grid-template-columns: repeat(2, 1fr);
+        max-height: 400px;
+        padding-right: 0;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -126,43 +160,18 @@
     </div>
   </header>
 
-  <main class="content">
-    <h1>🚗 Presentación de Flota</h1>
-
-    <!-- Galería inicial -->
-    <div class="galeria-inicial" id="galeria">
-      <div class="item-galeria">
-        <img src="Imagenes/corolla-cross.jpg" alt="Corolla Cross">
-        <p>SUV Toyota Corolla Cross</p>
+  <main>
+    <h1 style="text-align: center; margin: 0.8rem 0 1rem;">🚗 Presentación de Flota</h1>
+    <div class="layout-doble">
+      <div class="columna-izquierda" id="lista-autos"></div>
+      <div class="columna-derecha">
+        <div class="contenedor-carrusel">
+          <img id="imagen-actual" class="auto-imagen" src="" alt="">
+          <div class="nombre-auto" id="nombre-auto"></div>
+          <div class="caracteristicas" id="caracteristicas"></div>
+          <div class="indicadores" id="indicadores"></div>
+        </div>
       </div>
-      <div class="item-galeria">
-        <img src="Imagenes/corolla-sedan.jpg" alt="Corolla Sedán">
-        <p>Toyota Corolla Sedán</p>
-      </div>
-      <div class="item-galeria">
-        <img src="Imagenes/sw4.jpg" alt="SW4">
-        <p>SUV Toyota SW4</p>
-      </div>
-      <div class="item-galeria">
-        <img src="Imagenes/mercedes-vito.jpg" alt="Mercedes Vito">
-        <p>Minivan Mercedes Benz Vito</p>
-      </div>
-      <div class="item-galeria">
-        <img src="Imagenes/hiace-wagon.jpg" alt="HIACE Wagon">
-        <p>Minivan Toyota HIACE Wagon</p>
-      </div>
-      <div class="item-galeria">
-        <img src="Imagenes/hiace-computer.jpg" alt="HIACE Commuter">
-        <p>Van Toyota HIACE Commuter</p>
-      </div>
-    </div>
-
-    <!-- Carrusel -->
-    <div class="carrusel-contenedor" id="carrusel">
-      <img id="imagen-actual" class="auto-imagen" src="" alt="">
-      <div class="nombre-auto" id="nombre-auto"></div>
-      <div class="caracteristicas" id="caracteristicas"></div>
-      <div class="indicadores" id="indicadores"></div>
     </div>
   </main>
 
@@ -205,18 +214,31 @@
     ];
 
     let indiceActual = 0;
-    const galeria = document.getElementById('galeria');
-    const carrusel = document.getElementById('carrusel');
+    const listaAutos = document.getElementById('lista-autos');
     const imgElement = document.getElementById('imagen-actual');
     const nombreAuto = document.getElementById('nombre-auto');
     const caracteristicasDiv = document.getElementById('caracteristicas');
     const indicadoresDiv = document.getElementById('indicadores');
 
+    function crearListaAutos() {
+      listaAutos.innerHTML = '';
+      flota.forEach((auto, i) => {
+        const div = document.createElement('div');
+        div.className = 'mini-auto';
+        div.innerHTML = `
+          <img src="${auto.imagen}" alt="${auto.nombre}">
+          <div class="nombre">${auto.nombre}</div>
+        `;
+        div.addEventListener('click', () => mostrarAuto(i));
+        listaAutos.appendChild(div);
+      });
+    }
+
     function crearIndicadores() {
       indicadoresDiv.innerHTML = '';
       flota.forEach((_, i) => {
         const circulo = document.createElement('div');
-        circulo.classList.add('circulo');
+        circulo.className = 'circulo';
         if (i === 0) circulo.classList.add('activo');
         circulo.addEventListener('click', () => mostrarAuto(i));
         indicadoresDiv.appendChild(circulo);
@@ -231,27 +253,23 @@
     }
 
     function mostrarAuto(indice) {
-      // Quitar clases visibles
       imgElement.classList.remove('visible');
       nombreAuto.classList.remove('visible');
       caracteristicasDiv.classList.remove('visible');
 
-      // Esperar un instante para que la animación de salida ocurra
       setTimeout(() => {
         const auto = flota[indice];
         imgElement.src = auto.imagen;
-        imgElement.alt = auto.nombre;
         nombreAuto.textContent = auto.nombre;
         caracteristicasDiv.innerHTML = auto.caracteristicas;
 
-        // Aplicar clases visibles
         imgElement.classList.add('visible');
         nombreAuto.classList.add('visible');
         caracteristicasDiv.classList.add('visible');
 
         indiceActual = indice;
         actualizarIndicadores();
-      }, 300); // sincronizado con la transición
+      }, 300);
     }
 
     function autoSiguiente() {
@@ -260,14 +278,10 @@
     }
 
     // Iniciar
+    crearListaAutos();
     crearIndicadores();
-
-    setTimeout(() => {
-      galeria.style.display = 'none';
-      carrusel.style.display = 'flex';
-      mostrarAuto(0);
-      setInterval(autoSiguiente, 10000);
-    }, 10000);
+    mostrarAuto(0);
+    setInterval(autoSiguiente, 10000);
   </script>
 </body>
 </html>

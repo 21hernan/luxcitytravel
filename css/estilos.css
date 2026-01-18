@@ -13,12 +13,12 @@ body {
 
 header {
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 0.8rem 1rem; /* antes era 1.5rem */
   background: white;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+ /* box-shadow: 0 2px 5px rgba(0,0,0,0.05);*/
 }
 
 .logo-container {
