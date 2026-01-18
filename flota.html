@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lux City Travel - Flota</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo">
+      <nav class="menu">
+        <a href="acerca.html"><span>🏢</span> Acerca de Nosotros</a>
+        <a href="servicios.html"><span>💎</span> Servicios y Tecnología</a>
+        <a href="flota.html"><span>🚗</span> Presentación de Flota</a>
+        <a href="choferes.html"><span>👨‍✈️</span> Capacitación de Choferes</a>
+        <a href="contacto.html"><span>📞</span> Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1>🚗 Presentación de Flota</h1>
+    <div class="galeria-flota">
+      <div class="vehiculo">
+        <img src="Imagenes/corolla-sedan.jpg" alt="Toyota Corolla Sedán">
+        <p>Toyota Corolla Sedán</p>
+      </div>
+      <div class="vehiculo">
+        <img src="Imagenes/corolla-cross.jpg" alt="SUV Toyota Corolla Cross">
+        <p>SUV Toyota Corolla Cross</p>
+      </div>
+      <div class="vehiculo">
+        <img src="Imagenes/sw4.jpg" alt="SUV Toyota SW4">
+        <p>SUV Toyota SW4</p>
+      </div>
+      <div class="vehiculo">
+        <img src="Imagenes/mercedes-vito.jpg" alt="Minivan Mercedes Benz Vito">
+        <p>Minivan Mercedes Benz Vito</p>
+      </div>
+      <div class="vehiculo">
+        <img src="Imagenes/hiace-wagon.jpg" alt="Minivan Toyota HIACE Wagon">
+        <p>Minivan Toyota HIACE Wagon</p>
+      </div>
+      <div class="vehiculo">
+        <img src="Imagenes/hiace-computer.jpg" alt="Van Toyota HIACE Commuter">
+        <p>Van Toyota HIACE Commuter</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Opcional: si querés mantener el hover en escritorio
+    document.querySelectorAll('.logo').forEach(logo => {
+      logo.addEventListener('mouseenter', () => {
+        document.querySelector('.menu').style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
