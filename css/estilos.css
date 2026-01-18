@@ -46,12 +46,33 @@ header {
   margin-top: 0.5rem;
   padding: 0.5rem 0;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none; /* ← evita que ocupe espacio interactivo */
 }
 
 .logo-container:hover .menu,
 .menu:hover {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
+}
+
+/* En móviles: mostrar menú solo si se hace clic/tap en el logo */
+@media (max-width: 768px) {
+  .menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background: #f8f8f8;
+    margin-top: 0.5rem;
+    display: none; /* ← ahora usamos display:none en móvil */
+  }
+
+  .logo-container.active .menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 .menu a {
