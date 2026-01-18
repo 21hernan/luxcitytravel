@@ -5,6 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lux City Travel - Acerca de Nosotros</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .layout-doble {
+      display: flex;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .columna {
+      flex: 1;
+    }
+
+    .seccion {
+      margin-bottom: 2rem;
+    }
+
+    .seccion h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .seccion p, .seccion ol {
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .seccion ol {
+      padding-left: 1.5rem;
+    }
+
+    .seccion li {
+      margin-bottom: 0.6rem;
+    }
+
+    @media (max-width: 900px) {
+      .layout-doble {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -21,25 +64,41 @@
     </div>
   </header>
 
-  <main class="content">
-    <h1>🏢 Acerca de Nosotros</h1>
-    <p><strong>Lux City Travel</strong> nace de la unión entre la innovación tecnológica y una profunda herencia en el sector del transporte ejecutivo. Somos una empresa joven, pero con cimientos sólidos: nuestro equipo fundador y operativo cuenta con más de 10 años de experiencia liderando la logística de traslados en las agencias más prestigiosas del país.</p>
-    <p>Entendemos que el mercado actual exige algo más que "ir de un punto A hacia un punto B". Por eso, capitalizamos todo el aprendizaje de nuestras trayectorias anteriores para crear un modelo de servicio superador, donde la agilidad de una empresa moderna se encuentra con el protocolo y la distinción de la vieja escuela.</p>
+  <main>
+    <div class="layout-doble">
+      <!-- Columna izquierda -->
+      <div class="columna">
+        <div class="seccion">
+          <h2>🏢 Acerca de Nosotros</h2>
+          <p><strong>Lux City Travel</strong> nace de la unión entre la innovación tecnológica y una profunda herencia en el sector del transporte ejecutivo. Somos una empresa joven, pero con cimientos sólidos: nuestro equipo fundador y operativo cuenta con más de 10 años de experiencia liderando la logística de traslados en las agencias más prestigiosas del país.</p>
+          <p>Entendemos que el mercado actual exige algo más que "ir de un punto A hacia un punto B". Por eso, capitalizamos todo el aprendizaje de nuestras trayectorias anteriores para crear un modelo de servicio superador, donde la agilidad de una empresa moderna se encuentra con el protocolo y la distinción de la vieja escuela.</p>
+        </div>
 
-    <h2>🎯 Nuestra Misión</h2>
-    <p>Brindar soluciones de movilidad premium que simplifiquen la vida de nuestros clientes corporativos y hoteleros. Nos esforzamos por ofrecer un servicio de transporte donde la puntualidad, la seguridad y la discreción sean la norma, apoyándonos en herramientas tecnológicas que garanticen una gestión transparente y eficiente.</p>
+        <div class="seccion">
+          <h2>🎯 Nuestra Misión</h2>
+          <p>Brindar soluciones de movilidad premium que simplifiquen la vida de nuestros clientes corporativos y hoteleros. Nos esforzamos por ofrecer un servicio de transporte donde la puntualidad, la seguridad y la discreción sean la norma, apoyándonos en herramientas tecnológicas que garanticen una gestión transparente y eficiente.</p>
+        </div>
+      </div>
 
-    <h2>👁️ Nuestra Visión</h2>
-    <p>Consolidarnos como el aliado logístico número uno para hoteles y empresas multinacionales en Argentina, siendo reconocidos no solo por la calidad de nuestra flota, sino por la calidez humana de nuestro equipo y la capacidad de adaptarnos a los desafíos de un mundo en constante movimiento.</p>
+      <!-- Columna derecha -->
+      <div class="columna">
+        <div class="seccion">
+          <h2>👁️ Nuestra Visión</h2>
+          <p>Consolidarnos como el aliado logístico número uno para hoteles y empresas multinacionales en Argentina, siendo reconocidos no solo por la calidad de nuestra flota, sino por la calidez humana de nuestro equipo y la capacidad de adaptarnos a los desafíos de un mundo en constante movimiento.</p>
+        </div>
 
-    <h2>💎 Nuestros Valores</h2>
-    <ol>
-      <li><strong>Experiencia Renovada:</strong> No empezamos de cero. Traemos el know-how de años de trabajo previo para aplicarlo con una mentalidad innovadora y flexible.</li>
-      <li><strong>Excelencia en el Detalle:</strong> Desde la limpieza del vehículo hasta la vestimenta del chofer; creemos que en los pequeños detalles se construye la gran diferencia.</li>
-      <li><strong>Transparencia Tecnológica:</strong> Valoramos la confianza de nuestros clientes, por eso utilizamos sistemas que permiten auditar y visualizar cada servicio en tiempo real.</li>
-      <li><strong>Compromiso con la Seguridad:</strong> Entendemos la responsabilidad de trasladar personas. Nuestra flota y documentación cumplen estrictamente con los estándares legales más exigentes.</li>
-      <li><strong>Cultura del Servicio:</strong> No somos solo conductores; somos anfitriones. Nuestra vocación es hacer que cada pasajero se sienta en un ambiente seguro y confortable.</li>
-    </ol>
+        <div class="seccion">
+          <h2>💎 Nuestros Valores</h2>
+          <ol>
+            <li><strong>Experiencia Renovada:</strong> No empezamos de cero. Traemos el know-how de años de trabajo previo para aplicarlo con una mentalidad innovadora y flexible.</li>
+            <li><strong>Excelencia en el Detalle:</strong> Desde la limpieza del vehículo hasta la vestimenta del chofer; creemos que en los pequeños detalles se construye la gran diferencia.</li>
+            <li><strong>Transparencia Tecnológica:</strong> Valoramos la confianza de nuestros clientes, por eso utilizamos sistemas que permiten auditar y visualizar cada servicio en tiempo real.</li>
+            <li><strong>Compromiso con la Seguridad:</strong> Entendemos la responsabilidad de trasladar personas. Nuestra flota y documentación cumplen estrictamente con los estándares legales más exigentes.</li>
+            <li><strong>Cultura del Servicio:</strong> No somos solo conductores; somos anfitriones. Nuestra vocación es hacer que cada pasajero se sienta en un ambiente seguro y confortable.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
