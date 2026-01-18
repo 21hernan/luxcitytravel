@@ -32,8 +32,6 @@ header {
 }
 
 .menu {
-  opacity: 0;
-  visibility: hidden;
   position: absolute;
   top: 100%;
   left: 50%;
@@ -45,16 +43,25 @@ header {
   z-index: 1000;
   margin-top: 0.5rem;
   padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  pointer-events: none; /* ← evita que ocupe espacio interactivo */
+  pointer-events: none;
 }
 
-.logo-container:hover .menu,
+.menu.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/*.logo-container:hover .menu,
 .menu:hover {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
+*/
 
 /* En móviles: mostrar menú solo si se hace clic/tap en el logo */
 @media (max-width: 768px) {
@@ -148,5 +155,22 @@ footer {
     box-shadow: none;
     background: #f8f8f8;
     margin-top: 1rem;
+  }
+  }
+  /* Menú en móviles */
+@media (max-width: 768px) {
+  .menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background: #f8f8f8;
+    display: none;
+  }
+
+  .logo-container.active-mobile .menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
