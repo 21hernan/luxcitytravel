@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lux City Transfer</title>
+  <title>Lux City Travel</title>
   <style>
     * {
       margin: 0;
@@ -20,7 +20,7 @@
 
     header {
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 1.5rem 1rem;
       background: white;
       position: sticky;
       top: 0;
@@ -28,46 +28,39 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-    .logo {
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    nav {
-      background: #f8f8f8;
-      padding: 1rem 0;
-      text-align: center;
-    }
-
-    .menu {
+    .logo-container {
       display: inline-block;
       position: relative;
     }
 
-    .menu-label {
-      padding: 0.5rem 1.5rem;
-      cursor: pointer;
-      font-weight: 600;
-      color: #2c3e50;
+    .logo {
+      max-width: 320px;
+      display: block;
     }
 
-    .submenu {
-      display: none;
+    .menu {
+      opacity: 0;
+      visibility: hidden;
       position: absolute;
       top: 100%;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       background: white;
       min-width: 220px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       border-radius: 4px;
       z-index: 1000;
+      margin-top: 0.5rem;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    .menu:hover .submenu {
-      display: block;
+    .logo-container:hover .menu,
+    .menu:hover {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .submenu a {
+    .menu a {
       display: block;
       padding: 0.75rem 1.5rem;
       color: #2c3e50;
@@ -75,7 +68,7 @@
       transition: background 0.2s;
     }
 
-    .submenu a:hover {
+    .menu a:hover {
       background: #f0f0f0;
     }
 
@@ -109,13 +102,17 @@
     }
 
     @media (max-width: 768px) {
-      .submenu {
-        position: static;
-        box-shadow: none;
-        background: #f0f0f0;
-        margin-top: 0.5rem;
+      .logo {
+        max-width: 240px;
       }
-      .menu:hover .submenu {
+      .menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background: #f8f8f8;
+        margin-top: 1rem;
+      }
+      .logo-container:hover .menu {
         display: block;
       }
     }
@@ -124,21 +121,17 @@
 <body>
 
   <header>
-    <img src="Imágenes/luxcityviajes.png" alt="Lux City Transfer" class="logo">
-  </header>
-
-  <nav>
-    <div class="menu">
-      <span class="menu-label">☰ Navegación</span>
-      <div class="submenu">
+    <div class="logo-container">
+      <img src="Imagenes/luxcityviajes.png" alt="Lux City Transfer" class="logo">
+      <nav class="menu">
         <a href="#" onclick="showSection('acerca')">Acerca de Nosotros</a>
         <a href="#" onclick="showSection('servicios')">Servicios y Tecnología</a>
         <a href="#" onclick="showSection('flota')">Presentación de Flota</a>
         <a href="#" onclick="showSection('choferes')">Capacitación de Choferes</a>
         <a href="#" onclick="showSection('contacto')">Contacto</a>
-      </div>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <main class="content">
     <!-- Sección: Acerca de Nosotros -->
@@ -225,11 +218,9 @@
 
   <script>
     function showSection(id) {
-      // Ocultar todas las secciones
       document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('active');
       });
-      // Mostrar la seleccionada
       document.getElementById(id).classList.add('active');
     }
   </script>
