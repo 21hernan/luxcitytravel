@@ -33,12 +33,16 @@
       color: #444;
     }
 
-    /* Carrusel */
+    /* Carrusel - contenedor con altura fija para evitar scroll */
     .carrusel-contenedor {
       display: none;
       max-width: 500px;
       margin: 2rem auto;
       text-align: center;
+      min-height: 500px; /* ← evita cambios de altura */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .auto-imagen {
@@ -46,6 +50,14 @@
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .auto-imagen.visible {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .nombre-auto {
@@ -53,6 +65,12 @@
       font-size: 1.3rem;
       font-weight: 700;
       color: #2c3e50;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .nombre-auto.visible {
+      opacity: 1;
     }
 
     .caracteristicas {
@@ -63,9 +81,15 @@
       font-size: 0.95rem;
       line-height: 1.6;
       color: #555;
+      opacity: 0;
+      transition: opacity 0.6s ease 0.2s; /* ligero retraso */
     }
 
-    /* Indicadores de círculos */
+    .caracteristicas.visible {
+      opacity: 1;
+    }
+
+    /* Indicadores */
     .indicadores {
       margin-top: 1.5rem;
       display: flex;
@@ -202,38 +226,34 @@
     function actualizarIndicadores() {
       const circulos = indicadoresDiv.querySelectorAll('.circulo');
       circulos.forEach((circulo, i) => {
-        if (i === indiceActual) {
-          circulo.classList.add('activo');
-        } else {
-          circulo.classList.remove('activo');
-        }
+        circulo.classList.toggle('activo', i === indiceActual);
       });
     }
 
     function mostrarAuto(indice) {
-      indiceActual = indice;
-      const auto = flota[indice];
-      imgElement.src = auto.imagen;
-      imgElement.alt = auto.nombre;
-      nombreAuto.textContent = auto.nombre;
-      caracteristicasDiv.innerHTML = auto.caracteristicas;
-      actualizarIndicadores();
+      // Quitar clases visibles
+      imgElement.classList.remove('visible');
+      nombreAuto.classList.remove('visible');
+      caracteristicasDiv.classList.remove('visible');
+
+      // Esperar un instante para que la animación de salida ocurra
+      setTimeout(() => {
+        const auto = flota[indice];
+        imgElement.src = auto.imagen;
+        imgElement.alt = auto.nombre;
+        nombreAuto.textContent = auto.nombre;
+        caracteristicasDiv.innerHTML = auto.caracteristicas;
+
+        // Aplicar clases visibles
+        imgElement.classList.add('visible');
+        nombreAuto.classList.add('visible');
+        caracteristicasDiv.classList.add('visible');
+
+        indiceActual = indice;
+        actualizarIndicadores();
+      }, 300); // sincronizado con la transición
     }
 
     function autoSiguiente() {
       indiceActual = (indiceActual + 1) % flota.length;
-      mostrarAuto(indiceActual);
-    }
-
-    // Iniciar
-    crearIndicadores();
-
-    setTimeout(() => {
-      galeria.style.display = 'none';
-      carrusel.style.display = 'block';
-      mostrarAuto(0); // Empieza con Corolla Cross
-      setInterval(autoSiguiente, 10000);
-    }, 10000);
-  </script>
-</body>
-</html>
+      mostrar
