@@ -15,39 +15,29 @@
     }
 
     .columna-izquierda {
-      flex: 0 0 50%; /* más ancho */
+      flex: 0 0 50%;
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.4rem;
       max-height: 600px;
       overflow-y: auto;
       padding-right: 1rem;
-      justify-items: center; /* centra cada item */
+      justify-items: center;
     }
 
     .mini-auto {
       text-align: center;
       cursor: pointer;
       width: 100%;
-      max-width: 240px; /* más ancho */
+      max-width: 240px;
     }
 
     .mini-auto img {
       width: 100%;
-      height: 120px;
+      height: 160px; /* más grande */
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .mini-auto .nombre {
-      margin-top: 0.6rem;
-      font-size: 1rem;
-      color: #2c3e50;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .columna-derecha {
@@ -80,19 +70,6 @@
     .auto-imagen.visible {
       opacity: 1;
       transform: scale(1);
-    }
-
-    .nombre-auto {
-      margin-top: 1.2rem;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #2c3e50;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-
-    .nombre-auto.visible {
-      opacity: 1;
     }
 
     .caracteristicas {
@@ -161,13 +138,13 @@
   </header>
 
   <main>
-    <h1 style="text-align: center; margin: 0.8rem 0 1rem;">🚗 Presentación de Flota</h1>
+    <h1 style="text-align: center; margin: 1.2rem 0 1.5rem;">🚗 Presentación de Flota</h1>
+
     <div class="layout-doble">
       <div class="columna-izquierda" id="lista-autos"></div>
       <div class="columna-derecha">
         <div class="contenedor-carrusel">
           <img id="imagen-actual" class="auto-imagen" src="" alt="">
-          <div class="nombre-auto" id="nombre-auto"></div>
           <div class="caracteristicas" id="caracteristicas"></div>
           <div class="indicadores" id="indicadores"></div>
         </div>
@@ -216,7 +193,6 @@
     let indiceActual = 0;
     const listaAutos = document.getElementById('lista-autos');
     const imgElement = document.getElementById('imagen-actual');
-    const nombreAuto = document.getElementById('nombre-auto');
     const caracteristicasDiv = document.getElementById('caracteristicas');
     const indicadoresDiv = document.getElementById('indicadores');
 
@@ -227,7 +203,6 @@
         div.className = 'mini-auto';
         div.innerHTML = `
           <img src="${auto.imagen}" alt="${auto.nombre}">
-          <div class="nombre">${auto.nombre}</div>
         `;
         div.addEventListener('click', () => mostrarAuto(i));
         listaAutos.appendChild(div);
@@ -254,17 +229,14 @@
 
     function mostrarAuto(indice) {
       imgElement.classList.remove('visible');
-      nombreAuto.classList.remove('visible');
       caracteristicasDiv.classList.remove('visible');
 
       setTimeout(() => {
         const auto = flota[indice];
         imgElement.src = auto.imagen;
-        nombreAuto.textContent = auto.nombre;
         caracteristicasDiv.innerHTML = auto.caracteristicas;
 
         imgElement.classList.add('visible');
-        nombreAuto.classList.add('visible');
         caracteristicasDiv.classList.add('visible');
 
         indiceActual = indice;
@@ -283,6 +255,8 @@
     mostrarAuto(0);
     setInterval(autoSiguiente, 10000);
   </script>
-  <script src="js/menu.js"></script>  
+
+  <!-- Menú interactivo (PC + móvil) -->
+  <script src="js/menu.js"></script>
 </body>
 </html>
