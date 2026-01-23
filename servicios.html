@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lux City Travel - Servicios</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .content { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    h2 { margin: 1.5rem 0 1rem; }
+    ul { margin-bottom: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="logo-container">
       <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo">
-      <nav class="menu">
+      <nav class="menu menu-a">
         <a href="acerca.html"><span>🏢</span> Acerca de Nosotros</a>
         <a href="servicios.html"><span>💎</span> Servicios y Tecnología</a>
         <a href="flota.html"><span>🚗</span> Presentación de Flota</a>
@@ -19,6 +26,16 @@
         <a href="contacto.html"><span>📞</span> Contacto</a>
       </nav>
     </div>
+
+    <nav class="menu-b" id="menuB" style="display: none;">
+      <ul>
+        <li><a href="acerca.html" id="link-acerca">Acerca de Nosotros</a></li>
+        <li><a href="servicios.html" id="link-servicios">Servicios y Tecnología</a></li>
+        <li><a href="flota.html" id="link-flota">Presentación de Flota</a></li>
+        <li><a href="choferes.html" id="link-choferes">Capacitación de Choferes</a></li>
+        <li><a href="contacto.html" id="link-contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="content">
@@ -42,6 +59,25 @@
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const config = window.LuxConfig || { menuStyle: 'A' };
+      const menuA = document.querySelector('.menu-a');
+      const menuB = document.getElementById('menuB');
+      
+      if (config.menuStyle === 'B') {
+        if (menuA) menuA.style.display = 'none';
+        if (menuB) menuB.style.display = 'block';
+        const link = document.getElementById('link-servicios');
+        if (link) link.classList.add('activo');
+      } else {
+        if (menuA) menuA.style.display = 'block';
+        if (menuB) menuB.style.display = 'none';
+      }
+    });
+  </script>
   <script src="js/menu.js"></script>
 </body>
 </html>

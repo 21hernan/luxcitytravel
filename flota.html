@@ -10,52 +10,38 @@
       display: flex;
       gap: 2rem;
       max-width: 1300px;
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       padding: 0 1.5rem;
     }
-
     .columna-izquierda {
       flex: 0 0 50%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.4rem;
-      max-height: 600px;
-      overflow-y: auto;
       padding-right: 1rem;
       justify-items: center;
     }
-
-    .mini-auto {
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-      max-width: 240px;
-    }
-
     .mini-auto img {
       width: 100%;
-      height: 180px; /* más grande */
+      height: 180px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     .columna-derecha {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      min-height: 600px;
+     /* min-height: 600px;*/
     }
-
     .contenedor-carrusel {
       width: 100%;
       max-width: 500px;
       text-align: center;
       margin-bottom: 1.5rem;
     }
-
     .auto-imagen {
       width: 100%;
       height: 350px;
@@ -66,12 +52,10 @@
       transform: scale(0.98);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
     .auto-imagen.visible {
       opacity: 1;
       transform: scale(1);
     }
-
     .caracteristicas {
       margin-top: 1rem;
       padding: 1rem;
@@ -83,18 +67,15 @@
       opacity: 0;
       transition: opacity 0.6s ease 0.2s;
     }
-
     .caracteristicas.visible {
       opacity: 1;
     }
-
     .indicadores {
       margin-top: 1.5rem;
       display: flex;
       justify-content: center;
       gap: 0.6rem;
     }
-
     .circulo {
       width: 12px;
       height: 12px;
@@ -103,15 +84,11 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .circulo.activo {
       background: #d4af37;
     }
-
     @media (max-width: 900px) {
-      .layout-doble {
-        flex-direction: column;
-      }
+      .layout-doble { flex-direction: column; }
       .columna-izquierda {
         flex: none;
         grid-template-columns: repeat(2, 1fr);
@@ -127,7 +104,7 @@
   <header>
     <div class="logo-container">
       <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo">
-      <nav class="menu">
+      <nav class="menu menu-a">
         <a href="acerca.html"><span>🏢</span> Acerca de Nosotros</a>
         <a href="servicios.html"><span>💎</span> Servicios y Tecnología</a>
         <a href="flota.html"><span>🚗</span> Presentación de Flota</a>
@@ -135,11 +112,20 @@
         <a href="contacto.html"><span>📞</span> Contacto</a>
       </nav>
     </div>
+
+    <nav class="menu-b" id="menuB" style="display: none;">
+      <ul>
+        <li><a href="acerca.html" id="link-acerca">Acerca de Nosotros</a></li>
+        <li><a href="servicios.html" id="link-servicios">Servicios y Tecnología</a></li>
+        <li><a href="flota.html" id="link-flota">Presentación de Flota</a></li>
+        <li><a href="choferes.html" id="link-choferes">Capacitación de Choferes</a></li>
+        <li><a href="contacto.html" id="link-contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
     <h1 style="text-align: center; margin: 1.2rem 0 1.5rem;">🚗 Presentación de Flota</h1>
-
     <div class="layout-doble">
       <div class="columna-izquierda" id="lista-autos"></div>
       <div class="columna-derecha">
@@ -201,9 +187,7 @@
       flota.forEach((auto, i) => {
         const div = document.createElement('div');
         div.className = 'mini-auto';
-        div.innerHTML = `
-          <img src="${auto.imagen}" alt="${auto.nombre}">
-        `;
+        div.innerHTML = `<img src="${auto.imagen}" alt="${auto.nombre}">`;
         div.addEventListener('click', () => mostrarAuto(i));
         listaAutos.appendChild(div);
       });
@@ -249,14 +233,30 @@
       mostrarAuto(indiceActual);
     }
 
-    // Iniciar
     crearListaAutos();
     crearIndicadores();
     mostrarAuto(0);
     setInterval(autoSiguiente, 10000);
   </script>
 
-  <!-- Menú interactivo (PC + móvil) -->
+  <script src="js/config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const config = window.LuxConfig || { menuStyle: 'A' };
+      const menuA = document.querySelector('.menu-a');
+      const menuB = document.getElementById('menuB');
+      
+      if (config.menuStyle === 'B') {
+        if (menuA) menuA.style.display = 'none';
+        if (menuB) menuB.style.display = 'block';
+        const link = document.getElementById('link-flota');
+        if (link) link.classList.add('activo');
+      } else {
+        if (menuA) menuA.style.display = 'block';
+        if (menuB) menuB.style.display = 'none';
+      }
+    });
+  </script>
   <script src="js/menu.js"></script>
 </body>
 </html>

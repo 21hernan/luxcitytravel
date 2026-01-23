@@ -13,39 +13,21 @@
       margin: 1.5rem auto;
       padding: 0 1.5rem;
     }
-
-    .columna {
-      flex: 1;
-    }
-
-    .seccion {
-      margin-bottom: 2rem;
-    }
-
+    .columna { flex: 1; }
+    .seccion { margin-bottom: 2rem; }
     .seccion h2 {
       color: #2c3e50;
       margin-bottom: 1rem;
       font-size: 1.4rem;
     }
-
     .seccion p, .seccion ol {
       line-height: 1.7;
       color: #444;
     }
-
-    .seccion ol {
-      padding-left: 1.5rem;
-    }
-
-    .seccion li {
-      margin-bottom: 0.6rem;
-    }
-
+    .seccion ol { padding-left: 1.5rem; }
+    .seccion li { margin-bottom: 0.6rem; }
     @media (max-width: 900px) {
-      .layout-doble {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
+      .layout-doble { flex-direction: column; gap: 1.5rem; }
     }
   </style>
 </head>
@@ -54,7 +36,7 @@
   <header>
     <div class="logo-container">
       <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo">
-      <nav class="menu">
+      <nav class="menu menu-a">
         <a href="acerca.html"><span>🏢</span> Acerca de Nosotros</a>
         <a href="servicios.html"><span>💎</span> Servicios y Tecnología</a>
         <a href="flota.html"><span>🚗</span> Presentación de Flota</a>
@@ -62,31 +44,36 @@
         <a href="contacto.html"><span>📞</span> Contacto</a>
       </nav>
     </div>
+
+    <nav class="menu-b" id="menuB" style="display: none;">
+      <ul>
+        <li><a href="acerca.html" id="link-acerca">Acerca de Nosotros</a></li>
+        <li><a href="servicios.html" id="link-servicios">Servicios y Tecnología</a></li>
+        <li><a href="flota.html" id="link-flota">Presentación de Flota</a></li>
+        <li><a href="choferes.html" id="link-choferes">Capacitación de Choferes</a></li>
+        <li><a href="contacto.html" id="link-contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
     <div class="layout-doble">
-      <!-- Columna izquierda -->
       <div class="columna">
         <div class="seccion">
           <h2>🏢 Acerca de Nosotros</h2>
           <p><strong>Lux City Travel</strong> nace de la unión entre la innovación tecnológica y una profunda herencia en el sector del transporte ejecutivo. Somos una empresa joven, pero con cimientos sólidos: nuestro equipo fundador y operativo cuenta con más de 10 años de experiencia liderando la logística de traslados en las agencias más prestigiosas del país.</p>
           <p>Entendemos que el mercado actual exige algo más que "ir de un punto A hacia un punto B". Por eso, capitalizamos todo el aprendizaje de nuestras trayectorias anteriores para crear un modelo de servicio superador, donde la agilidad de una empresa moderna se encuentra con el protocolo y la distinción de la vieja escuela.</p>
         </div>
-
         <div class="seccion">
           <h2>🎯 Nuestra Misión</h2>
           <p>Brindar soluciones de movilidad premium que simplifiquen la vida de nuestros clientes corporativos y hoteleros. Nos esforzamos por ofrecer un servicio de transporte donde la puntualidad, la seguridad y la discreción sean la norma, apoyándonos en herramientas tecnológicas que garanticen una gestión transparente y eficiente.</p>
         </div>
       </div>
-
-      <!-- Columna derecha -->
       <div class="columna">
         <div class="seccion">
           <h2>👁️ Nuestra Visión</h2>
           <p>Consolidarnos como el aliado logístico número uno para hoteles y empresas multinacionales en Argentina, siendo reconocidos no solo por la calidad de nuestra flota, sino por la calidez humana de nuestro equipo y la capacidad de adaptarnos a los desafíos de un mundo en constante movimiento.</p>
         </div>
-
         <div class="seccion">
           <h2>💎 Nuestros Valores</h2>
           <ol>
@@ -104,6 +91,25 @@
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
-<script src="js/menu.js"></script>
+
+  <script src="js/config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const config = window.LuxConfig || { menuStyle: 'A' };
+      const menuA = document.querySelector('.menu-a');
+      const menuB = document.getElementById('menuB');
+      
+      if (config.menuStyle === 'B') {
+        if (menuA) menuA.style.display = 'none';
+        if (menuB) menuB.style.display = 'block';
+        const link = document.getElementById('link-acerca');
+        if (link) link.classList.add('activo');
+      } else {
+        if (menuA) menuA.style.display = 'block';
+        if (menuB) menuB.style.display = 'none';
+      }
+    });
+  </script>
+  <script src="js/menu.js"></script>
 </body>
 </html>
