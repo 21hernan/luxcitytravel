@@ -6,42 +6,70 @@
   <title>Lux City Travel - Flota</title>
   <link rel="stylesheet" href="css/estilos.css">
   <style>
-    .layout-doble {
+    /* Título fijo */
+    .titulo-fijo {
+      text-align: center;
+      margin: 0;
+      padding: 0.3rem 0;
+      background: white;
+      position: sticky;
+      top: 60px; /* justo debajo del menú */
+      z-index: 99;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #2c3e50;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Contenedor principal con scroll solo en izquierda */
+    .contenedor-principal {
       display: flex;
       gap: 2rem;
       max-width: 1300px;
-      margin: 1.5rem auto;
-      padding: 0 1.5rem;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      height: calc(100vh - 130px); /* altura fija para el área de contenido */
     }
+
+    /* Columna izquierda: scrollea */
     .columna-izquierda {
       flex: 0 0 50%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.4rem;
+      overflow-y: auto; /* ← único lugar que scrollea */
       padding-right: 1rem;
       justify-items: center;
     }
+
     .mini-auto img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
+
+    /* Columna derecha: completamente fija */
     .columna-derecha {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-     /* min-height: 600px;*/
+      position: sticky;
+      top: 130px; /* ajustado para no solapar título */
+      height: fit-content;
+      max-height: calc(100vh - 150px);
+      overflow: hidden; /* asegura que no scrollee */
     }
+
     .contenedor-carrusel {
       width: 100%;
       max-width: 500px;
       text-align: center;
-      margin-bottom: 1.5rem;
     }
+
     .auto-imagen {
       width: 100%;
       height: 350px;
@@ -52,10 +80,12 @@
       transform: scale(0.98);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
+
     .auto-imagen.visible {
       opacity: 1;
       transform: scale(1);
     }
+
     .caracteristicas {
       margin-top: 1rem;
       padding: 1rem;
@@ -67,15 +97,18 @@
       opacity: 0;
       transition: opacity 0.6s ease 0.2s;
     }
+
     .caracteristicas.visible {
       opacity: 1;
     }
+
     .indicadores {
       margin-top: 1.5rem;
       display: flex;
       justify-content: center;
       gap: 0.6rem;
     }
+
     .circulo {
       width: 12px;
       height: 12px;
@@ -84,17 +117,25 @@
       cursor: pointer;
       transition: background 0.3s;
     }
+
     .circulo.activo {
       background: #d4af37;
     }
+
     @media (max-width: 900px) {
-      .layout-doble { flex-direction: column; }
+      .contenedor-principal {
+        flex-direction: column;
+        height: auto;
+      }
       .columna-izquierda {
-        flex: none;
         grid-template-columns: repeat(2, 1fr);
-        max-height: 400px;
         padding-right: 0;
         width: 100%;
+        max-height: 400px;
+      }
+      .columna-derecha {
+        position: static;
+        max-height: none;
       }
     }
   </style>
@@ -124,26 +165,29 @@
     </nav>
   </header>
 
-  <main>
-    <h1 style="text-align: center; margin: 1.2rem 0 1.5rem;">🚗 Presentación de Flota</h1>
-    <div class="layout-doble">
-      <div class="columna-izquierda" id="lista-autos"></div>
-      <div class="columna-derecha">
-        <div class="contenedor-carrusel">
-          <img id="imagen-actual" class="auto-imagen" src="" alt="">
-          <div class="caracteristicas" id="caracteristicas"></div>
-          <div class="indicadores" id="indicadores"></div>
-        </div>
+  <!-- Título fijo -->
+  <div class="titulo-fijo">Presentación de Flota</div>
+
+  <!-- Contenido dividido -->
+  <div class="contenedor-principal">
+    <div class="columna-izquierda" id="lista-autos"></div>
+    <div class="columna-derecha">
+      <div class="contenedor-carrusel">
+        <img id="imagen-actual" class="auto-imagen" src="" alt="">
+        <div class="caracteristicas" id="caracteristicas"></div>
+        <div class="indicadores" id="indicadores"></div>
       </div>
     </div>
-  </main>
+  </div>
 
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
 
   <script>
+    // Datos de la flota (6 originales + 3 nuevas)
     const flota = [
+      // Autos originales
       {
         imagen: "Imagenes/corolla-cross.jpg",
         nombre: "SUV Toyota Corolla Cross",
@@ -173,6 +217,22 @@
         imagen: "Imagenes/hiace-computer.jpg",
         nombre: "Van Toyota HIACE Commuter",
         caracteristicas: "• Motor 2.8L diésel<br>• Capacidad para 15 pasajeros<br>• Asientos reclinables<br>• Espacio para equipaje amplio"
+      },
+      // Fotos nuevas
+      {
+        imagen: "Imagenes/foto003.jpg",
+        nombre: "Foto 003",
+        caracteristicas: "Aquí se puede escribir algo de la foto."
+      },
+      {
+        imagen: "Imagenes/foto004.jpg",
+        nombre: "Foto 004",
+        caracteristicas: "Aquí se puede escribir algo de la foto."
+      },
+      {
+        imagen: "Imagenes/foto005.jpg",
+        nombre: "Foto 005",
+        caracteristicas: "Aquí se puede escribir algo de la foto."
       }
     ];
 
@@ -233,6 +293,7 @@
       mostrarAuto(indiceActual);
     }
 
+    // Iniciar
     crearListaAutos();
     crearIndicadores();
     mostrarAuto(0);

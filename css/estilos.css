@@ -74,20 +74,24 @@ header {
   background: #f8f9fa;
 }
 
-/* === Menú B: barra negra horizontal === */
+/* Menú B: barra negra mejorada */
 .menu-b {
   background: #000;
   padding: 0.6rem 0;
-  margin-top: 0.5rem;
+  margin: 0; /* sin margen superior */
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .menu-b ul {
   list-style: none;
   display: flex;
-  justify-content: center;
   gap: 2rem;
   margin: 0;
-  padding: 0;
+  padding: 0 2rem; /* espacio lateral */
+  justify-content: flex-start; /* alineado a la izquierda */
+  flex: 1;
 }
 
 .menu-b a {
@@ -99,6 +103,10 @@ header {
   transition: background 0.2s;
 }
 
+.menu-b a:hover,
+.menu-b a.activo {
+  background: #333;
+}
 .menu-b a:hover,
 .menu-b a.activo {
   background: #333;
@@ -153,4 +161,60 @@ footer {
     flex-wrap: wrap;
     gap: 1rem;
   }
+  /* Encabezado en dos columnas */
+.encabezado-doble {
+  display: flex;
+  width: 100%;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.columna-menu {
+  flex: 0 0 70%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-b {
+  background: #000;
+  padding: 0.6rem 0;
+  width: 100%;
+  margin: 0;
+}
+
+.menu-b ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0 2rem;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.menu-b a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.menu-b a:hover,
+.menu-b a.activo {
+  background: #333;
+}
+
+.columna-logo {
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.columna-logo .logo {
+  max-width: 280px;
+}
 }
