@@ -4,68 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lux City Travel - Servicios</title>
-  <link rel="stylesheet" href="css/estilos.css">
   <style>
-    /* Fondo con opacidad */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      position: relative;
+      background: url("Imagenes/FondoServicios.jpg") center/cover no-repeat fixed;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("Imagenes/FondoServicios.jpg"); /* ← Cambia por cada página */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.7;
-      z-index: -1;
-    }
-
-    /* Encabezado en grid */
     .encabezado-grid {
       display: grid;
       grid-template-columns: 62.5% 37.5%;
-      grid-template-rows: 40px 1fr;
+      grid-template-rows: 40px 36px;
       width: 100%;
       border-bottom: 1px solid #e0e0e0;
     }
-
-    .espacio-blanco {
-      grid-column: 1;
-      grid-row: 1;
-      background: white;
-    }
-
+    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
     .menu-negro {
       grid-column: 1;
       grid-row: 2;
       background: #000;
       display: flex;
-      padding: 0.6rem 0;
+      height: 36px;
+      align-items: center;
     }
-
     .menu-item {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
     .menu-item a {
       color: white;
       text-decoration: none;
       font-weight: 500;
-      padding: 0.4rem 0.2rem;
+      padding: 0.1rem 0.2rem;
       display: block;
       width: 100%;
       text-align: center;
@@ -73,11 +46,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    .menu-item a:hover {
-      background: #333;
-    }
-
+    .menu-item a:hover { background: #333; }
     .contenedor-logo {
       grid-column: 2;
       grid-row: 1 / span 2;
@@ -87,83 +56,48 @@
       justify-content: center;
       padding: 0.6rem 0;
     }
-
     .contenedor-logo img {
       max-height: 100px;
       height: auto;
     }
-
-    /* Contenido principal */
+    main { padding: 2rem 0; }
     .layout-doble {
       display: flex;
       gap: 2.5rem;
       max-width: 90%;
-      margin: 2rem auto;
+      margin: 0 auto;
       padding: 2rem;
       background: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-
-    .columna {
-      flex: 1;
-    }
-
-    .seccion {
-      margin-bottom: 2rem;
-    }
-
+    .columna { flex: 1; }
+    .seccion { margin-bottom: 2rem; }
     .seccion h2 {
       color: #2c3e50;
       margin-bottom: 1rem;
       font-size: 1.4rem;
     }
-
-    .seccion p, .seccion ol {
+    .seccion p, .seccion ul {
       line-height: 1.7;
       color: #444;
     }
-
-    .seccion ol {
+    .seccion ul {
       padding-left: 1.5rem;
+      margin: 1rem 0;
     }
-
-    .seccion li {
-      margin-bottom: 0.6rem;
-    }
-
+    .seccion li { margin-bottom: 0.6rem; }
     footer {
-      background: rgba(255, 255, 255, 0.85) !important;
+      background: rgba(255, 255, 255, 0.85);
       color: #666;
-      margin-top: 3rem;
-      padding: 2rem;
       text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      .encabezado-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: 40px auto;
-      }
-      .espacio-blanco,
-      .menu-negro,
-      .contenedor-logo {
-        grid-column: 1;
-        width: 100%;
-      }
-      .contenedor-logo {
-        grid-row: 1 / span 2;
-        padding: 0.3rem 0;
-      }
-      .contenedor-logo img {
-        max-height: 60px;
-      }
+      padding: 2rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Encabezado en grid -->
   <div class="encabezado-grid">
     <div class="espacio-blanco"></div>
     <div class="menu-negro">
@@ -193,7 +127,29 @@
       <div class="columna">
         <div class="seccion">
           <h2>💎 Nuestros Servicios</h2>
-          <p>Aquí va el contenido de servicios...</p>
+          <p><strong>Lux City Travel</strong> ofrece soluciones integrales de movilidad premium diseñadas para satisfacer las necesidades de hoteles, empresas y viajeros exigentes.</p>
+        </div>
+        <div class="seccion">
+          <h2>🏨 Para Hoteles</h2>
+          <ul>
+            <li><strong>Recepción & Bienvenida:</strong> Servicio bilingüe en aeropuertos con coordinación en tiempo real.</li>
+            <li><strong>City Tours Privados:</strong> Recorridos personalizados por CABA y GBA.</li>
+            <li><strong>Disposición Total:</strong> Vehículos con chofer para agendas de compras o turismo.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="columna">
+        <div class="seccion">
+          <h2>🏢 Para Empresas</h2>
+          <ul>
+            <li><strong>Cuentas Corrientes:</strong> Facturación centralizada y gestión por centros de costo.</li>
+            <li><strong>Eventos Corporativos:</strong> Logística integral para traslados de grandes grupos.</li>
+            <li><strong>Viajes Ejecutivos:</strong> Conexiones con el interior del país y países limítrofes.</li>
+          </ul>
+        </div>
+        <div class="seccion">
+          <h2>🔒 Transparencia y Seguridad</h2>
+          <p>Todos nuestros servicios incluyen seguimiento GPS en tiempo real, documentación al día y protocolos de seguridad certificados.</p>
         </div>
       </div>
     </div>
@@ -203,7 +159,5 @@
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/menu.js"></script>
 </body>
 </html>

@@ -4,44 +4,88 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lux City Travel - Flota</title>
-  <link rel="stylesheet" href="css/estilos.css">
   <style>
-    /* Título fijo */
-    .titulo-fijo {
-      text-align: center;
-      margin: 0;
-      padding: 0.3rem 0;
-      background: white;
-      position: sticky;
-      top: 60px; /* justo debajo del menú */
-      z-index: 99;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #2c3e50;
-      border-bottom: 1px solid #eee;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: url("Imagenes/FondoFlota.jpg") center/cover no-repeat fixed;
     }
-
-    /* Contenedor principal con scroll solo en izquierda */
-    .contenedor-principal {
+    .encabezado-grid {
+      display: grid;
+      grid-template-columns: 62.5% 37.5%;
+      grid-template-rows: 40px 36px;
+      width: 100%;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
+    .menu-negro {
+      grid-column: 1;
+      grid-row: 2;
+      background: #000;
+      display: flex;
+      height: 36px;
+      align-items: center;
+    }
+    .menu-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-item a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.1rem 0.2rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .menu-item a:hover { background: #333; }
+    .contenedor-logo {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 0;
+    }
+    .contenedor-logo img {
+      max-height: 100px;
+      height: auto;
+    }
+    main {
+      padding: 1rem 0;
+      text-align: center;
+    }
+    h1 {
+      margin: 0.4rem 0 1rem;
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+    .layout-doble {
       display: flex;
       gap: 2rem;
       max-width: 1300px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
-      height: calc(100vh - 130px); /* altura fija para el área de contenido */
+      padding: 0 1.5rem;
+      height: calc(100vh - 130px);
     }
-
-    /* Columna izquierda: scrollea */
     .columna-izquierda {
       flex: 0 0 50%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.4rem;
-      overflow-y: auto; /* ← único lugar que scrollea */
+      overflow-y: auto;
       padding-right: 1rem;
       justify-items: center;
     }
-
     .mini-auto img {
       width: 100%;
       height: 180px;
@@ -50,26 +94,21 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       cursor: pointer;
     }
-
-    /* Columna derecha: completamente fija */
     .columna-derecha {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: sticky;
-      top: 130px; /* ajustado para no solapar título */
-      height: fit-content;
-      max-height: calc(100vh - 150px);
-      overflow: hidden; /* asegura que no scrollee */
+      overflow: hidden;
+      padding-left: 1rem;
     }
-
     .contenedor-carrusel {
       width: 100%;
       max-width: 500px;
       text-align: center;
+      margin-bottom: 1.5rem;
+      flex-shrink: 0;
     }
-
     .auto-imagen {
       width: 100%;
       height: 350px;
@@ -80,12 +119,10 @@
       transform: scale(0.98);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
     .auto-imagen.visible {
       opacity: 1;
       transform: scale(1);
     }
-
     .caracteristicas {
       margin-top: 1rem;
       padding: 1rem;
@@ -97,18 +134,15 @@
       opacity: 0;
       transition: opacity 0.6s ease 0.2s;
     }
-
     .caracteristicas.visible {
       opacity: 1;
     }
-
     .indicadores {
       margin-top: 1.5rem;
       display: flex;
       justify-content: center;
       gap: 0.6rem;
     }
-
     .circulo {
       width: 12px;
       height: 12px;
@@ -117,13 +151,18 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .circulo.activo {
       background: #d4af37;
     }
-
+    footer {
+      background: rgba(255, 255, 255, 0.85);
+      color: #666;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
     @media (max-width: 900px) {
-      .contenedor-principal {
+      .layout-doble {
         flex-direction: column;
         height: auto;
       }
@@ -131,107 +170,93 @@
         grid-template-columns: repeat(2, 1fr);
         padding-right: 0;
         width: 100%;
-        max-height: 400px;
       }
       .columna-derecha {
-        position: static;
-        max-height: none;
+        padding-left: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-container">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo">
-      <nav class="menu menu-a">
-        <a href="acerca.html"><span>🏢</span> Acerca de Nosotros</a>
-        <a href="servicios.html"><span>💎</span> Servicios y Tecnología</a>
-        <a href="flota.html"><span>🚗</span> Presentación de Flota</a>
-        <a href="choferes.html"><span>👨‍✈️</span> Capacitación de Choferes</a>
-        <a href="contacto.html"><span>📞</span> Contacto</a>
-      </nav>
-    </div>
-
-    <nav class="menu-b" id="menuB" style="display: none;">
-      <ul>
-        <li><a href="acerca.html" id="link-acerca">Acerca de Nosotros</a></li>
-        <li><a href="servicios.html" id="link-servicios">Servicios y Tecnología</a></li>
-        <li><a href="flota.html" id="link-flota">Presentación de Flota</a></li>
-        <li><a href="choferes.html" id="link-choferes">Capacitación de Choferes</a></li>
-        <li><a href="contacto.html" id="link-contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Título fijo -->
-  <div class="titulo-fijo">Presentación de Flota</div>
-
-  <!-- Contenido dividido -->
-  <div class="contenedor-principal">
-    <div class="columna-izquierda" id="lista-autos"></div>
-    <div class="columna-derecha">
-      <div class="contenedor-carrusel">
-        <img id="imagen-actual" class="auto-imagen" src="" alt="">
-        <div class="caracteristicas" id="caracteristicas"></div>
-        <div class="indicadores" id="indicadores"></div>
+  <div class="encabezado-grid">
+    <div class="espacio-blanco"></div>
+    <div class="menu-negro">
+      <div class="menu-item">
+        <a href="acerca.html">Acerca de Nosotros</a>
+      </div>
+      <div class="menu-item">
+        <a href="servicios.html">Servicios y Tecnología</a>
+      </div>
+      <div class="menu-item">
+        <a href="flota.html">Presentación de Flota</a>
+      </div>
+      <div class="menu-item">
+        <a href="choferes.html">Capacitación de Choferes</a>
+      </div>
+      <div class="menu-item">
+        <a href="contacto.html">Contacto</a>
       </div>
     </div>
+    <div class="contenedor-logo">
+      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+    </div>
   </div>
+
+  <main>
+    <h1>Presentación de Flota</h1>
+    <div class="layout-doble">
+      <div class="columna-izquierda" id="lista-autos"></div>
+      <div class="columna-derecha">
+        <div class="contenedor-carrusel">
+          <img id="imagen-actual" class="auto-imagen" src="" alt="">
+          <div class="caracteristicas" id="caracteristicas"></div>
+          <div class="indicadores" id="indicadores"></div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
 
   <script>
-    // Datos de la flota (6 originales + 3 nuevas)
     const flota = [
-      // Autos originales
       {
         imagen: "Imagenes/corolla-cross.jpg",
-        nombre: "SUV Toyota Corolla Cross",
         caracteristicas: "• Motor 1.8L híbrido<br>• Transmisión CVT<br>• Asientos de cuero<br>• Pantalla táctil 9''<br>• Control de crucero adaptativo"
       },
       {
         imagen: "Imagenes/corolla-sedan.jpg",
-        nombre: "Toyota Corolla Sedán",
         caracteristicas: "• Motor 2.0L<br>• Transmisión automática<br>• Sistema de seguridad Toyota Safety Sense<br>• Conectividad Apple CarPlay / Android Auto"
       },
       {
         imagen: "Imagenes/sw4.jpg",
-        nombre: "SUV Toyota SW4",
         caracteristicas: "• Motor 2.8L diésel<br>• Tracción 4x4<br>• Capacidad para 7 pasajeros<br>• Suspensión reforzada para rutas"
       },
       {
         imagen: "Imagenes/mercedes-vito.jpg",
-        nombre: "Minivan Mercedes Benz Vito",
         caracteristicas: "• Motor 2.0L diésel<br>• Capacidad para 8 pasajeros<br>• Climatizador dual<br>• Interior premium con iluminación LED"
       },
       {
         imagen: "Imagenes/hiace-wagon.jpg",
-        nombre: "Minivan Toyota HIACE Wagon",
         caracteristicas: "• Motor 2.8L diésel<br>• Capacidad para 12 pasajeros<br>• Ventanas corredizas<br>• Ideal para grupos grandes"
       },
       {
         imagen: "Imagenes/hiace-computer.jpg",
-        nombre: "Van Toyota HIACE Commuter",
         caracteristicas: "• Motor 2.8L diésel<br>• Capacidad para 15 pasajeros<br>• Asientos reclinables<br>• Espacio para equipaje amplio"
       },
-      // Fotos nuevas
       {
         imagen: "Imagenes/foto003.jpg",
-        nombre: "Foto 003",
         caracteristicas: "Aquí se puede escribir algo de la foto."
       },
       {
         imagen: "Imagenes/foto004.jpg",
-        nombre: "Foto 004",
         caracteristicas: "Aquí se puede escribir algo de la foto."
       },
       {
         imagen: "Imagenes/foto005.jpg",
-        nombre: "Foto 005",
         caracteristicas: "Aquí se puede escribir algo de la foto."
       }
     ];
@@ -247,7 +272,7 @@
       flota.forEach((auto, i) => {
         const div = document.createElement('div');
         div.className = 'mini-auto';
-        div.innerHTML = `<img src="${auto.imagen}" alt="${auto.nombre}">`;
+        div.innerHTML = `<img src="${auto.imagen}" alt="">`;
         div.addEventListener('click', () => mostrarAuto(i));
         listaAutos.appendChild(div);
       });
@@ -293,31 +318,11 @@
       mostrarAuto(indiceActual);
     }
 
-    // Iniciar
     crearListaAutos();
     crearIndicadores();
     mostrarAuto(0);
     setInterval(autoSiguiente, 10000);
   </script>
 
-  <script src="js/config.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const config = window.LuxConfig || { menuStyle: 'A' };
-      const menuA = document.querySelector('.menu-a');
-      const menuB = document.getElementById('menuB');
-      
-      if (config.menuStyle === 'B') {
-        if (menuA) menuA.style.display = 'none';
-        if (menuB) menuB.style.display = 'block';
-        const link = document.getElementById('link-flota');
-        if (link) link.classList.add('activo');
-      } else {
-        if (menuA) menuA.style.display = 'block';
-        if (menuB) menuB.style.display = 'none';
-      }
-    });
-  </script>
-  <script src="js/menu.js"></script>
 </body>
 </html>

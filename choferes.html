@@ -4,77 +4,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lux City Travel - Choferes</title>
-  <link rel="stylesheet" href="css/estilos.css">
   <style>
-    .content { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-    h1 { text-align: center; margin-bottom: 2rem; }
-    h2 { margin: 1.5rem 0 1rem; }
-    ol { margin-bottom: 1.5rem; }
-    li { margin-bottom: 0.8rem; }
-    em { display: block; margin-top: 1rem; font-style: italic; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: url("Imagenes/FondoChoferes.jpg") center/cover no-repeat fixed;
+    }
+    .encabezado-grid {
+      display: grid;
+      grid-template-columns: 62.5% 37.5%;
+      grid-template-rows: 40px 36px;
+      width: 100%;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
+    .menu-negro {
+      grid-column: 1;
+      grid-row: 2;
+      background: #000;
+      display: flex;
+      height: 36px;
+      align-items: center;
+    }
+    .menu-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-item a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.1rem 0.2rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .menu-item a:hover { background: #333; }
+    .contenedor-logo {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 0;
+    }
+    .contenedor-logo img {
+      max-height: 100px;
+      height: auto;
+    }
+    main { padding: 2rem 0; }
+    .layout-doble {
+      display: flex;
+      gap: 2.5rem;
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .columna { flex: 1; }
+    .seccion { margin-bottom: 2rem; }
+    .seccion h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    .seccion p, .seccion ol {
+      line-height: 1.7;
+      color: #444;
+    }
+    .seccion ol {
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    .seccion li { margin-bottom: 0.8rem; }
+    em {
+      display: block;
+      margin-top: 1rem;
+      font-style: italic;
+      color: #555;
+    }
+    footer {
+      background: rgba(255, 255, 255, 0.85);
+      color: #666;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-container">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo">
-      <nav class="menu menu-a">
-        <a href="acerca.html"><span>🏢</span> Acerca de Nosotros</a>
-        <a href="servicios.html"><span>💎</span> Servicios y Tecnología</a>
-        <a href="flota.html"><span>🚗</span> Presentación de Flota</a>
-        <a href="choferes.html"><span>👨‍✈️</span> Capacitación de Choferes</a>
-        <a href="contacto.html"><span>📞</span> Contacto</a>
-      </nav>
+  <div class="encabezado-grid">
+    <div class="espacio-blanco"></div>
+    <div class="menu-negro">
+      <div class="menu-item">
+        <a href="acerca.html">Acerca de Nosotros</a>
+      </div>
+      <div class="menu-item">
+        <a href="servicios.html">Servicios y Tecnología</a>
+      </div>
+      <div class="menu-item">
+        <a href="flota.html">Presentación de Flota</a>
+      </div>
+      <div class="menu-item">
+        <a href="choferes.html">Capacitación de Choferes</a>
+      </div>
+      <div class="menu-item">
+        <a href="contacto.html">Contacto</a>
+      </div>
     </div>
+    <div class="contenedor-logo">
+      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+    </div>
+  </div>
 
-    <nav class="menu-b" id="menuB" style="display: none;">
-      <ul>
-        <li><a href="acerca.html" id="link-acerca">Acerca de Nosotros</a></li>
-        <li><a href="servicios.html" id="link-servicios">Servicios y Tecnología</a></li>
-        <li><a href="flota.html" id="link-flota">Presentación de Flota</a></li>
-        <li><a href="choferes.html" id="link-choferes">Capacitación de Choferes</a></li>
-        <li><a href="contacto.html" id="link-contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="content">
-    <h1>👨‍✈️ Capacitación de Choferes</h1>
-    <p>En Lux City Travel, entendemos que el vehículo es solo una parte del servicio; el verdadero valor reside en quién está al volante. Nuestros conductores no son simples choferes de plataforma, sino anfitriones profesionales que actúan como la cara visible de su empresa u hotel.</p>
-    
-    <h2>Protocolo de Capacitación y Selección</h2>
-    <ol>
-      <li><strong>Formación en Hospitality:</strong> Capacitamos a nuestro personal en protocolos de cortesía y atención al huésped, asegurando que cada viaje mantenga el nivel de servicio de un hotel 5 estrellas.</li>
-      <li><strong>Capacitación bilingüe:</strong> Contamos con choferes preparados para asistir a pasajeros extranjeros, facilitando la comunicación y brindando una bienvenida cálida en su idioma.</li>
-      <li><strong>Manejo Defensivo y Seguridad:</strong> Todo nuestro staff recibe entrenamiento en técnicas de conducción segura y protocolos de contingencia, priorizando siempre la integridad del pasajero.</li>
-      <li><strong>Tecnología y Discreción:</strong> Instruimos a nuestros colaboradores en el uso experto de nuestra plataforma de gestión y, fundamentalmente, en el estricto cumplimiento de los acuerdos de confidencialidad para pasajeros VIP y directivos.</li>
-    </ol>
-    <em>"No enviamos solo un auto; enviamos a un profesional comprometido con su tranquilidad."</em>
+  <main>
+    <div class="layout-doble">
+      <div class="columna">
+        <div class="seccion">
+          <h2>👨‍✈️ Capacitación de Choferes</h2>
+          <p>En Lux City Travel, entendemos que el vehículo es solo una parte del servicio; el verdadero valor reside en quién está al volante. Nuestros conductores no son simples choferes de plataforma, sino anfitriones profesionales que actúan como la cara visible de su empresa u hotel.</p>
+        </div>
+        <div class="seccion">
+          <h2>Protocolo de Capacitación y Selección</h2>
+          <ol>
+            <li><strong>Formación en Hospitality:</strong> Capacitamos a nuestro personal en protocolos de cortesía y atención al huésped, asegurando que cada viaje mantenga el nivel de servicio de un hotel 5 estrellas.</li>
+            <li><strong>Capacitación bilingüe:</strong> Contamos con choferes preparados para asistir a pasajeros extranjeros, facilitando la comunicación y brindando una bienvenida cálida en su idioma.</li>
+            <li><strong>Manejo Defensivo y Seguridad:</strong> Todo nuestro staff recibe entrenamiento en técnicas de conducción segura y protocolos de contingencia, priorizando siempre la integridad del pasajero.</li>
+            <li><strong>Tecnología y Discreción:</strong> Instruimos a nuestros colaboradores en el uso experto de nuestra plataforma de gestión y, fundamentalmente, en el estricto cumplimiento de los acuerdos de confidencialidad para pasajeros VIP y directivos.</li>
+          </ol>
+          <em>"No enviamos solo un auto; enviamos a un profesional comprometido con su tranquilidad."</em>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const config = window.LuxConfig || { menuStyle: 'A' };
-      const menuA = document.querySelector('.menu-a');
-      const menuB = document.getElementById('menuB');
-      
-      if (config.menuStyle === 'B') {
-        if (menuA) menuA.style.display = 'none';
-        if (menuB) menuB.style.display = 'block';
-        const link = document.getElementById('link-choferes');
-        if (link) link.classList.add('activo');
-      } else {
-        if (menuA) menuA.style.display = 'block';
-        if (menuB) menuB.style.display = 'none';
-      }
-    });
-  </script>
-  <script src="js/menu.js"></script>
 </body>
 </html>

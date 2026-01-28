@@ -11,42 +11,24 @@
       box-sizing: border-box;
     }
 
+    /* ✅ FONDO ATRÁS DE TODO */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       line-height: 1.6;
-      position: relative;
+      background: url("Imagenes/FondoAcerca.jpg") center/cover no-repeat fixed;
     }
 
-    /* Fondo tras el encabezado */
-    .fondo-detras {
-      position: absolute;
-      top: 76px; /* altura del encabezado: 40px + 36px */
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 76px);
-      background-image: url("Imagenes/FondoAcerca.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -1;
-    }
-
-    /* Encabezado en grid */
+    /* === Encabezado === */
     .encabezado-grid {
       display: grid;
       grid-template-columns: 62.5% 37.5%;
-      grid-template-rows: 40px 36px; /* fila 1: 40px, fila 2: 36px */
+      grid-template-rows: 40px 36px;
       width: 100%;
       border-bottom: 1px solid #e0e0e0;
     }
 
-    .espacio-blanco {
-      grid-column: 1;
-      grid-row: 1;
-      background: white;
-    }
-
+    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
     .menu-negro {
       grid-column: 1;
       grid-row: 2;
@@ -76,9 +58,7 @@
       text-overflow: ellipsis;
     }
 
-    .menu-item a:hover {
-      background: #333;
-    }
+    .menu-item a:hover { background: #333; }
 
     .contenedor-logo {
       grid-column: 2;
@@ -95,82 +75,47 @@
       height: auto;
     }
 
-    /* Contenido principal */
+    /* === Contenido principal === */
+    main {
+      padding: 2rem 0;
+    }
+
     .layout-doble {
       display: flex;
       gap: 2.5rem;
       max-width: 90%;
-      margin: 2rem auto;
+      margin: 0 auto;
       padding: 2rem;
+      /* ✅ Fondo semitransparente para ver el fondo detrás */
       background: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    .columna {
-      flex: 1;
-    }
-
-    .seccion {
-      margin-bottom: 2rem;
-    }
-
+    .columna { flex: 1; }
+    .seccion { margin-bottom: 2rem; }
     .seccion h2 {
       color: #2c3e50;
       margin-bottom: 1rem;
       font-size: 1.4rem;
     }
-
     .seccion p, .seccion ol {
       line-height: 1.7;
       color: #444;
     }
-
-    .seccion ol {
-      padding-left: 1.5rem;
-    }
-
-    .seccion li {
-      margin-bottom: 0.6rem;
-    }
+    .seccion ol { padding-left: 1.5rem; }
+    .seccion li { margin-bottom: 0.6rem; }
 
     footer {
-      background: rgba(255, 255, 255, 0.85) !important;
+      background: rgba(255, 255, 255, 0.85);
       color: #666;
-      margin-top: 3rem;
-      padding: 2rem;
       text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      .encabezado-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: 40px 36px;
-      }
-      .espacio-blanco,
-      .menu-negro,
-      .contenedor-logo {
-        grid-column: 1;
-        width: 100%;
-      }
-      .contenedor-logo {
-        grid-row: 1 / span 2;
-        padding: 0.3rem 0;
-      }
-      .contenedor-logo img {
-        max-height: 60px;
-      }
-      .fondo-detras {
-        top: 76px;
-        height: calc(100vh - 76px);
-      }
+      padding: 2rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-
-  <!-- Fondo tras el encabezado -->
-  <div class="fondo-detras"></div>
 
   <!-- Encabezado -->
   <div class="encabezado-grid">
@@ -193,7 +138,7 @@
       </div>
     </div>
     <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+      <img src="Imagenes/luxcityviajes.png" alt=" Lux City Travel">
     </div>
   </div>
 
