@@ -6,12 +6,21 @@
   <title>Lux City Travel - Contacto</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Sticky footer */
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       line-height: 1.6;
       background: url("Imagenes/FondoContacto.jpg") center/cover no-repeat fixed;
+      display: flex;
+      flex-direction: column;
     }
+
     .encabezado-grid {
       display: grid;
       grid-template-columns: 62.5% 37.5%;
@@ -19,6 +28,7 @@
       width: 100%;
       border-bottom: 1px solid #e0e0e0;
     }
+
     .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
     .menu-negro {
       grid-column: 1;
@@ -28,12 +38,14 @@
       height: 36px;
       align-items: center;
     }
+
     .menu-item {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .menu-item a {
       color: white;
       text-decoration: none;
@@ -46,7 +58,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .menu-item a:hover { background: #333; }
+
     .contenedor-logo {
       grid-column: 2;
       grid-row: 1 / span 2;
@@ -56,13 +70,20 @@
       justify-content: center;
       padding: 0.6rem 0;
     }
+
     .contenedor-logo img {
       max-height: 100px;
       height: auto;
     }
+
     main {
+      flex: 1;
       padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .content {
       max-width: 900px;
       margin: 0 auto;
@@ -72,28 +93,33 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       text-align: center;
     }
+
     h1 {
       margin-bottom: 2rem;
       color: #2c3e50;
     }
+
     p {
       margin: 1rem 0;
       font-size: 1.1rem;
     }
+
     a {
       color: #2c3e50;
       text-decoration: none;
       font-weight: bold;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
     footer {
       background: rgba(255, 255, 255, 0.85);
       color: #666;
       text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
+      padding: 1.5rem;
+      margin-top: auto; /* ← clave para sticky footer */
     }
   </style>
 </head>
@@ -119,7 +145,7 @@
       </div>
     </div>
     <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+      <img src="Imagenes/luxcityviajes.png" alt=" Lux City Travel">
     </div>
   </div>
 
@@ -135,6 +161,33 @@
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- Pantalla completa al cargar -->
+  <script>
+    // Intentar pantalla completa al cargar
+    function requestFullscreen() {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+      }
+    }
+
+    // Intentar al cargar (puede fallar si no hay interacción)
+    window.addEventListener('load', () => {
+      // Opcional: esperar un poco para mejor UX
+      setTimeout(() => {
+        requestFullscreen();
+      }, 1000);
+    });
+
+    // Alternativa: si falla, ofrecer botón (opcional)
+    // Puedes omitir esto si no lo querés
+  </script>
 
 </body>
 </html>
