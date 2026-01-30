@@ -10,7 +10,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       line-height: 1.6;
-      background: url("Imagenes/FondoServicios.jpg") center/cover no-repeat fixed;
+      background: white;
     }
     .encabezado-grid {
       display: grid;
@@ -60,7 +60,12 @@
       max-height: 100px;
       height: auto;
     }
-    main { padding: 2rem 0; }
+    main {
+      padding: 2rem 0;
+      display: flex;
+      justify-content: center;
+      min-height: calc(100vh - 150px); /* ajusta según necesites */
+    }
     .layout-doble {
       display: flex;
       gap: 2.5rem;
@@ -70,6 +75,9 @@
       background: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      min-height: 500px; /* mínimo razonable */
+      flex: 1;
+      align-items: flex-start; /* alinea al inicio, no centro */
     }
     .columna { flex: 1; }
     .seccion { margin-bottom: 2rem; }
@@ -92,7 +100,7 @@
       color: #666;
       text-align: center;
       padding: 2rem;
-      margin-top: 2rem;
+      margin-top: auto;
     }
   </style>
 </head>
