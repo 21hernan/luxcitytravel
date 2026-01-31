@@ -73,7 +73,7 @@
     }
 
     .contenido-columna {
-      padding: 0 0 2rem 16rem; /* ← posición original */
+      padding: 0 0 2rem 16rem;
     }
 
     .layout-doble {
@@ -90,7 +90,6 @@
       color: #2c3e50;
       margin-bottom: 1rem;
       font-size: 1.4rem;
-      /* Sin cambios: usa el estilo predeterminado de <h2> */
     }
     .seccion p, .seccion ul {
       line-height: 1.7;
@@ -101,12 +100,26 @@
       margin: 1rem 0;
     }
     .seccion li { margin-bottom: 0.6rem; }
-    footer {
-      background: rgba(255, 255, 255, 0.85);
-      color: #666;
+
+    /* ✅ Título centrado */
+    .titulo-centrado {
       text-align: center;
-      padding: 2rem;
-      margin-top: auto;
+    }
+
+    /* ✅ Frase destacada */
+    .frase-destacada {
+      font-weight: bold;
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+
+    /* ✅ Footer fuera del rectángulo */
+    .footer-fijo {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      color: #666;
+      margin-top: 2rem;
     }
 
     /* Responsive */
@@ -125,22 +138,11 @@
         padding: 0 2rem 2rem 2rem;
       }
     }
-
-    /* Centrar solo el primer título */
-      .titulo-centrado {
-        text-align: center;
-      }
-
-      /* Frase principal más grande y en negrita */
-      .frase-destacada {
-        font-weight: bold;
-        font-size: 1.15rem;
-        line-height: 1.6;
-      }
   </style>
 </head>
 <body>
 
+  <!-- Encabezado -->
   <div class="encabezado-grid">
     <div class="espacio-blanco"></div>
     <div class="menu-negro">
@@ -161,19 +163,18 @@
       </div>
     </div>
     <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt=" Lux City Travel">
+      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
     </div>
   </div>
 
+  <!-- Contenido -->
   <div class="contenido-principal">
     <div class="contenido-columna">
       <div class="layout-doble">
         <div class="seccion">
-        <div class="seccion">
           <h2 class="titulo-centrado">💎 Nuestros Servicios</h2>
-          <p class="frase-destacada">Lux City Travel ofrece soluciones integrales de movilidad premium diseñadas para satisfacer las necesidades de hoteles, empresas y viajeros exigentes.</p>
+          <p class="frase-destacada">Lux City Travel ofrece soluciones integrales de movilidad premium diseñadas para satisfacer las necesidades de hoteles, empresas y viajeros.</p>
         </div>
-
         <div class="seccion">
           <h2>🏨 Para Hoteles</h2>
           <ul>
@@ -199,8 +200,9 @@
     <div></div>
   </div>
 
-  <footer>
-    <p>&copy;  2026 Lux City Travel. Todos los derechos reservados.</p>
+  <!-- ✅ Footer fuera del rectángulo -->
+  <footer class="footer-fijo">
+    <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
 
 </body>
