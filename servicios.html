@@ -73,31 +73,24 @@
     }
 
     .contenido-columna {
-      padding: 0 0 2rem 16rem; /* texto bien posicionado */
+      padding: 0 0 2rem 16rem; /* ← posición original */
     }
 
-    /* Estilo base para pantallas chicas */
     .layout-doble {
       background: rgba(255, 255, 255, 0.8);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       padding: 2rem;
-      width: 100%;
-      margin-left: 0;
+      width: calc(100% + 600px);
+      margin-left: -150px;
     }
 
-    /* Estilo para pantallas grandes (≥1200px) */
-    @media (min-width: 1200px) {
-      .layout-doble {
-        width: calc(100% + 600px);
-        margin-left: -150px;
-      }
-    }
     .seccion { margin-bottom: 2rem; }
     .seccion h2 {
       color: #2c3e50;
       margin-bottom: 1rem;
       font-size: 1.4rem;
+      /* Sin cambios: usa el estilo predeterminado de <h2> */
     }
     .seccion p, .seccion ul {
       line-height: 1.7;
@@ -114,6 +107,23 @@
       text-align: center;
       padding: 2rem;
       margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (min-width: 1200px) {
+      .layout-doble {
+        width: calc(100% + 600px);
+        margin-left: -150px;
+      }
+    }
+    @media (max-width: 1199px) {
+      .layout-doble {
+        width: 100%;
+        margin-left: 0;
+      }
+      .contenido-columna {
+        padding: 0 2rem 2rem 2rem;
+      }
     }
   </style>
 </head>
@@ -148,7 +158,7 @@
       <div class="layout-doble">
         <div class="seccion">
           <h2>💎 Nuestros Servicios</h2>
-          <p><strong>Lux City Travel</strong> ofrece soluciones integrales de movilidad premium diseñadas para<br>satisfacer las necesidades de hoteles, empresas y viajeros exigentes.</p>
+          <p><strong>Lux City Travel</strong> ofrece soluciones integrales de movilidad premium diseñadas para satisfacer las necesidades de hoteles, empresas y viajeros exigentes.</p>
         </div>
         <div class="seccion">
           <h2>🏨 Para Hoteles</h2>
@@ -168,7 +178,7 @@
         </div>
         <div class="seccion">
           <h2>🔒 Transparencia y Seguridad</h2>
-          <p>Todos nuestros servicios incluyen seguimiento GPS en tiempo real, documentación al día<br>y protocolos de seguridad certificados.</p>
+          <p>Todos nuestros servicios incluyen seguimiento GPS en tiempo real, documentación al día y protocolos de seguridad certificados.</p>
         </div>
       </div>
     </div>
