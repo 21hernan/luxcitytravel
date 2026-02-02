@@ -71,28 +71,38 @@
     }
     .layout-doble {
       display: flex;
-      gap: 2rem;
-      max-width: 1300px;
+      gap: 2.5rem;
+      max-width: none;
       margin: 0 auto;
-      padding: 0 1.5rem;
-      height: calc(100vh - 130px);
+      padding: 1.5rem;
+      align-items: flex-start;
     }
     .columna-izquierda {
-      flex: 0 0 50%;
+      flex: 0 0 52%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.4rem;
+      gap: 1.8rem;
       overflow-y: auto;
       padding-right: 1rem;
       justify-items: center;
     }
-    .mini-auto img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .mini-auto {
+      text-align: center;
       cursor: pointer;
+    }
+    .mini-auto img {
+      width: 8cm;
+      height: 5cm;
+      object-fit: cover;
+      border: 1px solid #000;
+      border-radius: 4px;
+      display: block;
+    }
+    .mini-auto .nombre-auto {
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 0.95rem;
+      color: #2c3e50;
     }
     .columna-derecha {
       flex: 1;
@@ -110,11 +120,11 @@
       flex-shrink: 0;
     }
     .auto-imagen {
-      width: 100%;
-      height: 350px;
+      width: 16cm;
+      height: 10cm;
       object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 1px solid #000;
+      border-radius: 8px;
       opacity: 0;
       transform: scale(0.98);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -123,8 +133,14 @@
       opacity: 1;
       transform: scale(1);
     }
+    .nombre-detalle {
+      font-weight: bold;
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+      color: #2c3e50;
+    }
     .caracteristicas {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       padding: 1rem;
       background: #f9f9f9;
       border-radius: 8px;
@@ -158,13 +174,12 @@
       background: rgba(255, 255, 255, 0.85);
       color: #666;
       text-align: center;
-      padding: 2rem;
+      padding: 1.5rem;
       margin-top: 2rem;
     }
     @media (max-width: 900px) {
       .layout-doble {
         flex-direction: column;
-        height: auto;
       }
       .columna-izquierda {
         grid-template-columns: repeat(2, 1fr);
@@ -179,6 +194,7 @@
 </head>
 <body>
 
+  <!-- Encabezado -->
   <div class="encabezado-grid">
     <div class="espacio-blanco"></div>
     <div class="menu-negro">
@@ -203,6 +219,7 @@
     </div>
   </div>
 
+  <!-- Contenido principal -->
   <main>
     <h1>Presentación de Flota</h1>
     <div class="layout-doble">
@@ -210,6 +227,7 @@
       <div class="columna-derecha">
         <div class="contenedor-carrusel">
           <img id="imagen-actual" class="auto-imagen" src="" alt="">
+          <div class="nombre-detalle" id="nombre-detalle"></div>
           <div class="caracteristicas" id="caracteristicas"></div>
           <div class="indicadores" id="indicadores"></div>
         </div>
@@ -217,45 +235,56 @@
     </div>
   </main>
 
+  <!-- ✅ Footer AL FINAL ABSOLUTO DEL DOCUMENTO -->
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
 
+  <!-- Script -->
   <script>
     const flota = [
       {
+        nombre: "Suv Toyota Corolla Cross",
         imagen: "Imagenes/corolla-cross.jpg",
         caracteristicas: "• Motor 1.8L híbrido<br>• Transmisión CVT<br>• Asientos de cuero<br>• Pantalla táctil 9''<br>• Control de crucero adaptativo"
       },
       {
+        nombre: "Toyota Corolla Sédan",
         imagen: "Imagenes/corolla-sedan.jpg",
         caracteristicas: "• Motor 2.0L<br>• Transmisión automática<br>• Sistema de seguridad Toyota Safety Sense<br>• Conectividad Apple CarPlay / Android Auto"
       },
       {
+        nombre: "Suv Toyota SW4",
         imagen: "Imagenes/sw4.jpg",
         caracteristicas: "• Motor 2.8L diésel<br>• Tracción 4x4<br>• Capacidad para 7 pasajeros<br>• Suspensión reforzada para rutas"
       },
       {
+        nombre: "Minivan Mercedes Benz Vito",
         imagen: "Imagenes/mercedes-vito.jpg",
         caracteristicas: "• Motor 2.0L diésel<br>• Capacidad para 8 pasajeros<br>• Climatizador dual<br>• Interior premium con iluminación LED"
       },
       {
+        nombre: "Minivan Toyota Hiace Wagon",
         imagen: "Imagenes/hiace-wagon.jpg",
         caracteristicas: "• Motor 2.8L diésel<br>• Capacidad para 12 pasajeros<br>• Ventanas corredizas<br>• Ideal para grupos grandes"
       },
       {
+        nombre: "Minivan Toyota Hiace Commuter",
         imagen: "Imagenes/hiace-computer.jpg",
         caracteristicas: "• Motor 2.8L diésel<br>• Capacidad para 15 pasajeros<br>• Asientos reclinables<br>• Espacio para equipaje amplio"
       },
       {
+        nombre: "Foto 003",
         imagen: "Imagenes/foto003.jpg",
         caracteristicas: "Aquí se puede escribir algo de la foto."
       },
       {
+        nombre: "Foto 004",
         imagen: "Imagenes/foto004.jpg",
         caracteristicas: "Aquí se puede escribir algo de la foto."
       },
       {
+        nombre: "Foto 005",
         imagen: "Imagenes/foto005.jpg",
         caracteristicas: "Aquí se puede escribir algo de la foto."
       }
@@ -264,6 +293,7 @@
     let indiceActual = 0;
     const listaAutos = document.getElementById('lista-autos');
     const imgElement = document.getElementById('imagen-actual');
+    const nombreDetalle = document.getElementById('nombre-detalle');
     const caracteristicasDiv = document.getElementById('caracteristicas');
     const indicadoresDiv = document.getElementById('indicadores');
 
@@ -272,7 +302,10 @@
       flota.forEach((auto, i) => {
         const div = document.createElement('div');
         div.className = 'mini-auto';
-        div.innerHTML = `<img src="${auto.imagen}" alt="">`;
+        div.innerHTML = `
+          <img src="${auto.imagen}" alt="${auto.nombre}">
+          <div class="nombre-auto">${auto.nombre}</div>
+        `;
         div.addEventListener('click', () => mostrarAuto(i));
         listaAutos.appendChild(div);
       });
@@ -298,14 +331,17 @@
 
     function mostrarAuto(indice) {
       imgElement.classList.remove('visible');
+      nombreDetalle.style.opacity = '0';
       caracteristicasDiv.classList.remove('visible');
 
       setTimeout(() => {
         const auto = flota[indice];
         imgElement.src = auto.imagen;
+        nombreDetalle.textContent = auto.nombre;
         caracteristicasDiv.innerHTML = auto.caracteristicas;
 
         imgElement.classList.add('visible');
+        nombreDetalle.style.opacity = '1';
         caracteristicasDiv.classList.add('visible');
 
         indiceActual = indice;
