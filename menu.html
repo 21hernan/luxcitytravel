@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Final - Lux City Travel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+      color: #333;
+    }
+
+    .barra {
+      background: #000;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+
+    .enlaces {
+      display: flex;
+      gap: 0; /* eliminamos gap porque usamos padding */
+    }
+
+    .enlaces a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;       /* ← negrita */
+      font-size: 16px;
+      white-space: nowrap;
+      padding: 0 16px;         /* ← 4 espacios antes y después de cada título */
+      display: block;
+    }
+
+    .logo-fuera {
+      position: absolute;
+      top: 12px;
+      right: 200px;
+      height: 120px;
+    }
+
+    .contenido {
+      padding-top: 100px;
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="barra">
+    <div class="enlaces">
+      <a href="#">Acerca de Nosotros</a>
+      <a href="#">Servicios y Tecnología</a>
+      <a href="#">Presentación de Flota</a>
+      <a href="#">Capacitación de Choferes</a>
+      <a href="#">Contacto</a>
+    </div>
+  </div>
+
+  <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo-fuera">
+
+  <div class="contenido">
+    <h2>✅ Menú final listo</h2>
+    <p>• Negrita<br>
+       • 4 espacios entre títulos<br>
+       • Barra: margin-top=50px, margin-left=50px<br>
+       • Logo: right=200px, height=120px</p>
+  </div>
+
+</body>
+</html>

@@ -1,164 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lux City Travel - Choferes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lux City Travel - Capacitación de Choferes</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
       line-height: 1.6;
-      background: url("Imagenes/FondoChoferes.jpg") center/cover no-repeat fixed;
     }
-    .encabezado-grid {
-      display: grid;
-      grid-template-columns: 62.5% 37.5%;
-      grid-template-rows: 40px 36px;
-      width: 100%;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
-    .menu-negro {
-      grid-column: 1;
-      grid-row: 2;
+
+    /* === MENÚ === */
+    .barra {
       background: #000;
-      display: flex;
-      height: 36px;
+      height: 40px;
+      display: inline-flex;
       align-items: center;
+      margin-top: 50px;
+      margin-left: 50px;
     }
-    .menu-item {
-      flex: 1;
+
+    .enlaces {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 0;
     }
-    .menu-item a {
+
+    .enlaces a:first-child {
+      padding-left: 24px;
+    }
+    .enlaces a:last-child {
+      padding-right: 24px;
+    }
+    .enlaces a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      padding: 0.1rem 0.2rem;
-      display: block;
-      width: 100%;
-      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      padding: 0 16px;
+      display: block;
+      transition: background 0.2s;
     }
-    .menu-item a:hover { background: #333; }
-    .contenedor-logo {
-      grid-column: 2;
-      grid-row: 1 / span 2;
+    .enlaces a:hover {
+      background: #333;
+    }
+
+    /* === LOGO === */
+    .logo-fuera {
+      position: absolute;
+      top: 12px;
+      right: 220px;
+      height: 110px;
+    }
+
+    /* === HOJA DE CONTENIDO === */
+    .hoja {
       background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 0;
-    }
-    .contenedor-logo img {
-      max-height: 100px;
-      height: auto;
-    }
-    main { padding: 2rem 0; }
-    .layout-doble {
-      display: flex;
-      gap: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 30px;
+      margin: 20px auto;
       max-width: 90%;
-      margin: 0 auto;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .columna { flex: 1; }
-    .seccion { margin-bottom: 2rem; }
-    .seccion h2 {
+
+    h2 {
       color: #2c3e50;
-      margin-bottom: 1rem;
+      margin: 1.5rem 0 1rem;
       font-size: 1.4rem;
     }
-    .seccion p, .seccion ol {
-      line-height: 1.7;
-      color: #444;
-    }
-    .seccion ol {
-      padding-left: 1.5rem;
-      margin: 1rem 0;
-    }
-    .seccion li { margin-bottom: 0.8rem; }
-    em {
-      display: block;
-      margin-top: 1rem;
-      font-style: italic;
+
+    p {
+      margin-bottom: 1rem;
       color: #555;
     }
-    footer {
-      background: rgba(255, 255, 255, 0.85);
-      color: #666;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
+
+    ul, ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
     }
-    .frase-destacada {
-      font-weight: bold;
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    footer {
       text-align: center;
-      margin-top: 1.5rem;
-      font-style: normal;
-  }
+      padding: 20px;
+      color: #777;
+      margin-top: 40px;
+      border-top: 1px solid #eee;
+    }
+
+    /* === CELULAR === */
+    @media (max-width: 768px) {
+      body { background: white; }
+
+      .logo-fuera {
+        position: static;
+        display: block;
+        margin: 20px auto;
+        height: 80px;
+        right: auto;
+        top: auto;
+      }
+
+      .barra {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto 20px !important;
+        padding: 0 !important;
+        height: auto;
+      }
+
+      .enlaces {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .enlaces a {
+        padding: 12px 0 !important;
+        text-align: center;
+        border-bottom: 1px solid #333;
+      }
+      .enlaces a:last-child {
+        border-bottom: none;
+      }
+
+      .hoja {
+        padding: 20px;
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="encabezado-grid">
-    <div class="espacio-blanco"></div>
-    <div class="menu-negro">
-      <div class="menu-item">
-        <a href="acerca.html">Acerca de Nosotros</a>
-      </div>
-      <div class="menu-item">
-        <a href="servicios.html">Servicios y Tecnología</a>
-      </div>
-      <div class="menu-item">
-        <a href="flota.html">Presentación de Flota</a>
-      </div>
-      <div class="menu-item">
-        <a href="choferes.html">Capacitación de Choferes</a>
-      </div>
-      <div class="menu-item">
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-    <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+  <!-- Menú -->
+  <div class="barra">
+    <div class="enlaces">
+      <a href="acerca.html">Acerca de Nosotros</a>
+      <a href="servicios.html">Servicios y Tecnología</a>
+      <a href="flota.html">Presentación de Flota</a>
+      <a href="choferes.html">Capacitación de Choferes</a>
+      <a href="contacto.html">Contacto</a>
     </div>
   </div>
 
-  <main>
-    <div class="layout-doble">
-      <div class="columna">
-        <div class="seccion">
-          <h2>👨‍✈️ Capacitación de Choferes</h2>
-          <p>En Lux City Travel, entendemos que el vehículo es solo una parte del servicio; el verdadero valor reside en quién está al volante. Nuestros conductores no son simples choferes de plataforma, sino anfitriones profesionales que actúan como la cara visible de su empresa u hotel.</p>
-        </div>
-        <div class="seccion">
-          <h2>Protocolo de Capacitación y Selección</h2>
-          <ol>
-            <li><strong>Formación en Hospitality:</strong> Capacitamos a nuestro personal en protocolos de cortesía y atención al huésped, asegurando que cada viaje mantenga el nivel de servicio premium.</li>
-            <li><strong>Capacitación bilingüe:</strong> Contamos con choferes preparados para asistir a pasajeros extranjeros, facilitando la comunicación y brindando una bienvenida cálida en su idioma.</li>
-            <li><strong>Manejo Defensivo y Seguridad:</strong> Todo nuestro staff recibe entrenamiento en técnicas de conducción segura y protocolos de contingencia, priorizando siempre la integridad del pasajero.</li>
-            <li><strong>Tecnología y Discreción:</strong> Instruimos a nuestros colaboradores en el uso experto de nuestra plataforma de gestión y, fundamentalmente, en el estricto cumplimiento de los acuerdos de confidencialidad para pasajeros VIP y directivos.</li>
-          </ol>
-          <p class="frase-destacada">"No enviamos solo un auto; sumamos a un profesional comprometido con su tranquilidad."</p>
-          
-        </div>
-      </div>
-    </div>
-  </main>
+  <!-- Logo -->
+  <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo-fuera">
+
+  <!-- Contenido -->
+  <div class="hoja">
+    <h2>Capacitación de Choferes</h2>
+    <p>Nuestros conductores no son simples choferes: son profesionales capacitados bajo un riguroso protocolo que combina experiencia, seguridad y servicio de excelencia.</p>
+
+    <h2>Formación Integral</h2>
+    <ul>
+      <li><strong>Protocolo Ejecutivo:</strong> Vestimenta impecable, trato discreto y manejo de situaciones delicadas.</li>
+      <li><strong>Seguridad Vial Avanzada:</strong> Cursos periódicos en defensiva, primeros auxilios y manejo en condiciones adversas.</li>
+      <li><strong>Conocimiento Local:</strong> Dominio de rutas, accesos restringidos y puntos estratégicos de la ciudad.</li>
+      <li><strong>Idiomas:</strong> Nuestro equipo cuenta con personal bilingüe para atención internacional.</li>
+    </ul>
+
+    <h2>Evaluación Continua</h2>
+    <p>Cada conductor es evaluado mensualmente en base a:</p>
+    <ul>
+      <li>Puntualidad y cumplimiento</li>
+      <li>Estado del vehículo</li>
+      <li>Feedback de clientes</li>
+      <li>Cumplimiento de normas internas</li>
+    </ul>
+
+    <p><strong>No enviamos solo un auto; sumamos a un profesional comprometido con su tranquilidad.</strong></p>
+  </div>
 
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
-  <script  src="js/construccion.js"></script>
+
 </body>
 </html>

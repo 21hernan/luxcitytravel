@@ -1,210 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lux City Travel - Servicios</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lux City Travel - Servicios y Tecnología</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
       line-height: 1.6;
-      background: white;
     }
-    .encabezado-grid {
-      display: grid;
-      grid-template-columns: 62.5% 37.5%;
-      grid-template-rows: 40px 36px;
-      width: 100%;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
-    .menu-negro {
-      grid-column: 1;
-      grid-row: 2;
+
+    /* === MENÚ === */
+    .barra {
       background: #000;
-      display: flex;
-      height: 36px;
+      height: 40px;
+      display: inline-flex;
       align-items: center;
+      margin-top: 50px;
+      margin-left: 50px;
     }
-    .menu-item {
-      flex: 1;
+
+    .enlaces {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 0;
     }
-    .menu-item a {
+
+    .enlaces a:first-child {
+      padding-left: 24px;
+    }
+    .enlaces a:last-child {
+      padding-right: 24px;
+    }
+    .enlaces a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      padding: 0.1rem 0.2rem;
-      display: block;
-      width: 100%;
-      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      padding: 0 16px;
+      display: block;
+      transition: background 0.2s;
     }
-    .menu-item a:hover,
-    .menu-item a.active {
+    .enlaces a:hover {
       background: #333;
     }
-    .contenedor-logo {
-      grid-column: 2;
-      grid-row: 1 / span 2;
+
+    /* === LOGO === */
+    .logo-fuera {
+      position: absolute;
+      top: 12px;
+      right: 220px;
+      height: 110px;
+    }
+
+    /* === HOJA DE CONTENIDO === */
+    .hoja {
       background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 0;
-    }
-    .contenedor-logo img {
-      max-height: 100px;
-      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 90%;
     }
 
-    .contenido-principal {
-      display: grid;
-      grid-template-columns: 62.5% 37.5%;
-      width: 100%;
-      min-height: calc(100vh - 150px);
-      padding-top: 2rem;
-    }
-
-    .contenido-columna {
-      padding: 0 0 2rem 16rem;
-    }
-
-    .layout-doble {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      padding: 2rem;
-      width: calc(100% + 600px);
-      margin-left: -150px;
-    }
-
-    .seccion { margin-bottom: 2rem; }
-    .seccion h2 {
+    h2 {
       color: #2c3e50;
-      margin-bottom: 1rem;
+      margin: 1.5rem 0 1rem;
       font-size: 1.4rem;
     }
-    .seccion p, .seccion ul {
-      line-height: 1.7;
-      color: #444;
+
+    p {
+      margin-bottom: 1rem;
+      color: #555;
     }
-    .seccion ul {
+
+    ul, ol {
+      margin-bottom: 1.5rem;
       padding-left: 1.5rem;
-      margin: 1rem 0;
     }
-    .seccion li { margin-bottom: 0.6rem; }
+    li {
+      margin-bottom: 0.6rem;
+    }
 
-    /* ✅ Título centrado */
-    .titulo-centrado {
+    footer {
       text-align: center;
+      padding: 20px;
+      color: #777;
+      margin-top: 40px;
+      border-top: 1px solid #eee;
     }
 
-    /* ✅ Frase destacada */
-    .frase-destacada {
-      font-weight: bold;
-      font-size: 1.15rem;
-      line-height: 1.6;
-    }
+    /* === CELULAR === */
+    @media (max-width: 768px) {
+      body { background: white; }
 
-    /* ✅ Footer fuera del rectángulo */
-    .footer-fijo {
-      text-align: center;
-      padding: 1.5rem;
-      background: white;
-      color: #666;
-      margin-top: 2rem;
-    }
-
-    /* Responsive */
-    @media (min-width: 1200px) {
-      .layout-doble {
-        width: calc(100% + 600px);
-        margin-left: -150px;
+      .logo-fuera {
+        position: static;
+        display: block;
+        margin: 20px auto;
+        height: 80px;
+        right: auto;
+        top: auto;
       }
-    }
-    @media (max-width: 1199px) {
-      .layout-doble {
+
+      .barra {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto 20px !important;
+        padding: 0 !important;
+        height: auto;
+      }
+
+      .enlaces {
+        flex-direction: column;
         width: 100%;
-        margin-left: 0;
       }
-      .contenido-columna {
-        padding: 0 2rem 2rem 2rem;
+
+      .enlaces a {
+        padding: 12px 0 !important;
+        text-align: center;
+        border-bottom: 1px solid #333;
+      }
+      .enlaces a:last-child {
+        border-bottom: none;
+      }
+
+      .hoja {
+        padding: 20px;
+        margin: 0 auto;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Encabezado -->
-  <div class="encabezado-grid">
-    <div class="espacio-blanco"></div>
-    <div class="menu-negro">
-      <div class="menu-item">
-        <a href="acerca.html">Acerca de Nosotros</a>
-      </div>
-      <div class="menu-item">
-        <a href="servicios.html" class="active">Servicios y Tecnología</a>
-      </div>
-      <div class="menu-item">
-        <a href="flota.html">Presentación de Flota</a>
-      </div>
-      <div class="menu-item">
-        <a href="choferes.html">Capacitación de Choferes</a>
-      </div>
-      <div class="menu-item">
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-    <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+  <!-- Menú -->
+  <div class="barra">
+    <div class="enlaces">
+      <a href="acerca.html">Acerca de Nosotros</a>
+      <a href="servicios.html">Servicios y Tecnología</a>
+      <a href="flota.html">Presentación de Flota</a>
+      <a href="choferes.html">Capacitación de Choferes</a>
+      <a href="contacto.html">Contacto</a>
     </div>
   </div>
 
+  <!-- Logo -->
+  <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo-fuera">
 
   <!-- Contenido -->
-  <div class="contenido-principal">
-    <div class="contenido-columna">
-      <div class="layout-doble">
-        <div class="seccion">
-          <h2 class="titulo-centrado">💎 Nuestros Servicios</h2>
-          <p class="frase-destacada">Lux City Travel ofrece soluciones integrales de movilidad premium diseñadas para satisfacer las necesidades de hoteles, empresas y viajeros.</p>
-        </div>
-        <div class="seccion">
-          <h2>🏨 Para Hoteles</h2>
-          <ul>
-            <li><strong>Recepción & Bienvenida:</strong> Servicio bilingüe en aeropuertos con coordinación en tiempo real.</li>
-            <li><strong>City Tours Privados:</strong> Recorridos personalizados por CABA y GBA.</li>
-            <li><strong>Disposición Total:</strong> Vehículos con chofer para agendas de compras o turismo.</li>
-          </ul>
-        </div>
-        <div class="seccion">
-          <h2>🏢 Para Empresas</h2>
-          <ul>
-            <li><strong>Cuentas Corrientes:</strong> Facturación centralizada.</li>
-            <li><strong>Eventos Corporativos:</strong> Logística integral para traslados de grandes grupos.</li>
-            <li><strong>Viajes Ejecutivos:</strong> Conexiones con el interior del país y países limítrofes.</li>
-          </ul>
-        </div>
-        <div class="seccion">
-          <h2>🔒 Transparencia y Seguridad</h2>
-          <p>Todos nuestros servicios incluyen seguimiento GPS en tiempo real, documentación al día y protocolos de seguridad certificados.</p>
-        </div>
-      </div>
-    </div>
-    <div></div>
+  <div class="hoja">
+    <h2>Nuestros Servicios</h2>
+    <p>En <strong>Lux City Travel</strong>, ofrecemos soluciones integrales de movilidad ejecutiva diseñadas para brindar comodidad, puntualidad y seguridad en cada traslado.</p>
+    <ul>
+      <li><strong>Traslados Corporativos:</strong> Servicio puerta a puerta para ejecutivos y equipos de trabajo, con vehículos premium y choferes profesionales.</li>
+      <li><strong>Asistencia Hotelera:</strong> Coordinación directa con hoteles para recepción y despacho de huéspedes VIP.</li>
+      <li><strong>Eventos y Congresos:</strong> Logística de flota para eventos corporativos, bodas y reuniones de alto nivel.</li>
+      <li><strong>Servicio por Hora:</strong> Disponibilidad flexible para recorridos personalizados dentro de la ciudad o zonas aledañas.</li>
+    </ul>
+
+    <h2>Tecnología</h2>
+    <p>Integramos herramientas tecnológicas para garantizar transparencia y eficiencia:</p>
+    <ul>
+      <li><strong>Seguimiento en tiempo real:</strong> Monitoreo GPS del vehículo asignado.</li>
+      <li><strong>Confirmación automática:</strong> Notificaciones de llegada y estado del servicio.</li>
+      <li><strong>Gestión digital:</strong> Historial de viajes, facturación electrónica y reportes personalizados.</li>
+    </ul>
+
+    <p><strong>No enviamos solo un auto; sumamos a un profesional comprometido con su tranquilidad.</strong></p>
   </div>
 
-  <!-- ✅ Footer fuera del rectángulo -->
-  <footer class="footer-fijo">
+  <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
-  <script   src="js/construccion.js"></script>  
+
 </body>
 </html>

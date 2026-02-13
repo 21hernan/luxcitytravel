@@ -1,172 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lux City Travel - Acerca de Nosotros</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* Fondo blanco */
     body {
+      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
       line-height: 1.6;
-      background: white; /* ← fondo blanco */
     }
 
-    .encabezado-grid {
-      display: grid;
-      grid-template-columns: 62.5% 37.5%;
-      grid-template-rows: 40px 36px;
-      width: 100%;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
-    .menu-negro {
-      grid-column: 1;
-      grid-row: 2;
+    /* === MENÚ === */
+    .barra {
       background: #000;
-      display: flex;
-      height: 36px;
+      height: 40px;
+      display: inline-flex;
       align-items: center;
+      margin-top: 50px;
+      margin-left: 50px;
     }
 
-    .menu-item {
-      flex: 1;
+    .enlaces {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 0;
     }
 
-    .menu-item a {
+    .enlaces a:first-child {
+      padding-left: 24px;
+    }
+    .enlaces a:last-child {
+      padding-right: 24px;
+    }
+    .enlaces a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      padding: 0.1rem 0.2rem;
-      display: block;
-      width: 100%;
-      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      padding: 0 16px;
+      display: block;
+      transition: background 0.2s;
+    }
+    .enlaces a:hover {
+      background: #333;
     }
 
-    .menu-item a:hover { background: #333; }
+    /* === LOGO === */
+    .logo-fuera {
+      position: absolute;
+      top: 12px;
+      right: 220px;
+      height: 110px;
+    }
 
-    .contenedor-logo {
-      grid-column: 2;
-      grid-row: 1 / span 2;
+    /* === HOJA (contenedor completo del contenido) === */
+    .hoja {
       background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 90%;
     }
-
-    .contenedor-logo img {
-      max-height: 100px;
-      height: auto;
-    }
-
-    main { padding: 2rem 0; }
 
     .layout-doble {
       display: flex;
-      gap: 2.5rem;
-      max-width: 90%;
-      margin: 0 auto;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      gap: 40px;
     }
 
-    .columna { flex: 1; }
-    .seccion { margin-bottom: 2rem; }
-    .seccion h2 {
+    .columna-izq, .columna-der {
+      flex: 1;
+    }
+
+    h2 {
       color: #2c3e50;
-      margin-bottom: 1rem;
+      margin: 1.5rem 0 1rem;
       font-size: 1.4rem;
     }
-    .seccion p, .seccion ol {
-      line-height: 1.7;
-      color: #444;
+
+    p {
+      margin-bottom: 1rem;
+      color: #555;
     }
-    .seccion ol { padding-left: 1.5rem; }
-    .seccion li { margin-bottom: 0.6rem; }
+
+    ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
 
     footer {
-      background: rgba(255, 255, 255, 0.85);
-      color: #666;
       text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
+      padding: 20px;
+      color: #777;
+      margin-top: 40px;
+      border-top: 1px solid #eee;
     }
+    /* === CELULAR: menú vertical, logo arriba, contenido en una columna === */
+@media (max-width: 768px) {
+  body {
+    background: white;
+  }
+
+  /* Logo centrado arriba */
+  .logo-fuera {
+    position: static;
+    display: block;
+    margin: 20px auto;
+    height: 80px;
+    right: auto;
+    top: auto;
+  }
+
+  /* Menú en 5 líneas */
+  .barra {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto 20px !important;
+    padding: 0 !important;
+    height: auto;
+  }
+
+  .enlaces {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .enlaces a {
+    padding: 12px 0 !important;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+
+  .enlaces a:last-child {
+    border-bottom: none;
+  }
+
+  /* Contenido en una columna */
+  .layout-doble {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hoja {
+    padding: 20px;
+    margin: 0 auto;
+  }
+}
   </style>
 </head>
 <body>
 
-  <div class="encabezado-grid">
-    <div class="espacio-blanco"></div>
-    <div class="menu-negro">
-      <div class="menu-item">
-        <a href="acerca.html">Acerca de Nosotros</a>
-      </div>
-      <div class="menu-item">
-        <a href="servicios.html">Servicios y Tecnología</a>
-      </div>
-      <div class="menu-item">
-        <a href="flota.html">Presentación de Flota</a>
-      </div>
-      <div class="menu-item">
-        <a href="choferes.html">Capacitación de Choferes</a>
-      </div>
-      <div class="menu-item">
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-    <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt=" Lux City Travel">
+  <!-- Menú -->
+  <div class="barra">
+    <div class="enlaces">
+      <a href="acerca.html">Acerca de Nosotros</a>
+      <a href="servicios.html">Servicios y Tecnología</a>
+      <a href="flota.html">Presentación de Flota</a>
+      <a href="choferes.html">Capacitación de Choferes</a>
+      <a href="contacto.html">Contacto</a>
     </div>
   </div>
 
-  <main>
+  <!-- Logo -->
+  <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo-fuera">
+
+  <!-- Hoja completa (la "hoja de papel") -->
+  <div class="hoja">
     <div class="layout-doble">
-      <div class="columna">
-        <div class="seccion">
-          <h2>🏢 Acerca de Nosotros</h2>
-          <p><strong>Lux City Travel</strong> nace de la unión entre la innovación tecnológica y una profunda herencia en el sector del transporte ejecutivo. Somos una empresa joven, pero con cimientos sólidos: nuestro equipo fundador y operativo cuenta con más de 10 años de experiencia liderando la logística de traslados en las agencias más prestigiosas del país.</p>
-          <p>Entendemos que el mercado actual exige algo más que "ir de un punto A hacia un punto B". Por eso, capitalizamos todo el aprendizaje de nuestras trayectorias anteriores para crear un modelo de servicio superador, donde la agilidad de una empresa moderna se encuentra con el protocolo y la distinción de la vieja escuela.</p>
-        </div>
-        <div class="seccion">
-          <h2>🎯 Nuestra Misión</h2>
-          <p>Brindar soluciones de movilidad premium que simplifiquen la vida de nuestros clientes corporativos y hoteleros. Nos esforzamos por ofrecer un servicio de transporte donde la puntualidad, la seguridad y la discreción sean la norma, apoyándonos en herramientas tecnológicas que garanticen una gestión transparente y eficiente.</p>
-        </div>
+      <div class="columna-izq">
+        <h2>Acerca de Nosotros</h2>
+        <p><strong>Lux City Travel</strong> nace de la unión entre la innovación tecnológica y una profunda herencia en el sector del transporte ejecutivo. Somos una empresa joven, pero con cimientos sólidos: nuestro equipo fundador y operativo cuenta con más de 10 años de experiencia liderando la logística de traslados en las agencias más prestigiosas del país.</p>
+        <p>Entendemos que el mercado actual exige algo más que "ir de un punto A hacia un punto B". Por eso, capitalizamos todo el aprendizaje de nuestras trayectorias anteriores para crear un modelo de servicio superador, donde la agilidad de una empresa moderna se encuentra con el protocolo y la distinción de la vieja escuela.</p>
+
+        <h2>Nuestra Misión</h2>
+        <p>Brindar soluciones de movilidad premium que simplifiquen la vida de nuestros clientes corporativos y hoteleros. Nos esforzamos por ofrecer un servicio de transporte donde la puntualidad, la seguridad y la discreción sean la norma, apoyándonos en herramientas tecnológicas que garanticen una gestión transparente y eficiente.</p>
       </div>
-      <div class="columna">
-        <div class="seccion">
-          <h2>👁️ Nuestra Visión</h2>
-          <p>Consolidarnos como el aliado logístico número uno para hoteles y empresas multinacionales en Argentina, siendo reconocidos no solo por la calidad de nuestra flota, sino por la calidez humana de nuestro equipo y la capacidad de adaptarnos a los desafíos de un mundo en constante movimiento.</p>
-        </div>
-        <div class="seccion">
-          <h2>💎 Nuestros Valores</h2>
-          <ol>
-            <li><strong>Experiencia Renovada:</strong> No empezamos de cero. Traemos el know-how de años de trabajo previo para aplicarlo con una mentalidad innovadora y flexible.</li>
-            <li><strong>Excelencia en el Detalle:</strong> Desde la limpieza del vehículo hasta la vestimenta del chofer; creemos que en los pequeños detalles se construye la gran diferencia.</li>
-            <li><strong>Transparencia Tecnológica:</strong> Valoramos la confianza de nuestros clientes, por eso utilizamos sistemas que permiten auditar y visualizar cada servicio en tiempo real.</li>
-            <li><strong>Compromiso con la Seguridad:</strong> Entendemos la responsabilidad de trasladar personas. Nuestra flota y documentación cumplen estrictamente con los estándares legales más exigentes.</li>
-            <li><strong>Cultura del Servicio:</strong> No somos solo conductores; somos anfitriones. Nuestra vocación es hacer que cada pasajero se sienta en un ambiente seguro y confortable.</li>
-          </ol>
-        </div>
+
+      <div class="columna-der">
+        <h2>Nuestra Visión</h2>
+        <p>Consolidarnos como el aliado logístico número uno para hoteles y empresas multinacionales en Argentina, siendo reconocidos no solo por la calidad de nuestra flota, sino por la calidez humana de nuestro equipo y la capacidad de adaptarnos a los desafíos de un mundo en constante movimiento.</p>
+
+        <h2>Nuestros Valores</h2>
+        <ol>
+          <li><strong>Experiencia Renovada:</strong> No empezamos de cero. Traemos el know-how de años de trabajo previo para aplicarlo con una mentalidad innovadora y flexible.</li>
+          <li><strong>Excelencia en el Detalle:</strong> Desde la limpieza del vehículo hasta la vestimenta del chofer; creemos que en los pequeños detalles se construye la gran diferencia.</li>
+          <li><strong>Transparencia Tecnológica:</strong> Valoramos la confianza de nuestros clientes, por eso utilizamos sistemas que permiten auditar y visualizar cada servicio en tiempo real.</li>
+          <li><strong>Compromiso con la Seguridad:</strong> Entendemos la responsabilidad de trasladar personas. Nuestra flota y documentación cumplen estrictamente con los estándares legales más exigentes.</li>
+          <li><strong>Cultura del Servicio:</strong> No somos solo conductores; somos anfitriones. Nuestra vocación es hacer que cada pasajero se sienta en un ambiente seguro y confortable.</li>
+        </ol>
       </div>
     </div>
-  </main>
+  </div>
 
   <footer>
     <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
   </footer>
-  <script  src="js/construccion.js"></script>
+
 </body>
 </html>

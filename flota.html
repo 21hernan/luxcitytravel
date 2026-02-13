@@ -1,164 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lux City Travel - Flota</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lux City Travel - Presentación de Flota</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
       line-height: 1.6;
-      background: url("Imagenes/FondoFlota.jpg") center/cover no-repeat fixed;
     }
-    .encabezado-grid {
-      display: grid;
-      grid-template-columns: 62.5% 37.5%;
-      grid-template-rows: 40px 36px;
-      width: 100%;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .espacio-blanco { grid-column: 1; grid-row: 1; background: white; }
-    .menu-negro {
-      grid-column: 1;
-      grid-row: 2;
+
+    /* === MENÚ === */
+    .barra {
       background: #000;
-      display: flex;
-      height: 36px;
+      height: 40px;
+      display: inline-flex;
       align-items: center;
+      margin-top: 50px;
+      margin-left: 50px;
     }
-    .menu-item {
-      flex: 1;
+
+    .enlaces {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 0;
     }
-    .menu-item a {
+
+    .enlaces a:first-child {
+      padding-left: 24px;
+    }
+    .enlaces a:last-child {
+      padding-right: 24px;
+    }
+    .enlaces a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      padding: 0.1rem 0.2rem;
-      display: block;
-      width: 100%;
-      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      padding: 0 16px;
+      display: block;
+      transition: background 0.2s;
     }
-    .menu-item a:hover { background: #333; }
-    .contenedor-logo {
-      grid-column: 2;
-      grid-row: 1 / span 2;
+    .enlaces a:hover {
+      background: #333;
+    }
+
+    /* === LOGO === */
+    .logo-fuera {
+      position: absolute;
+      top: 12px;
+      right: 220px;
+      height: 110px;
+    }
+
+    /* === HOJA BLANCA === */
+    .hoja {
       background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      width: calc(100% - 100px);
+      margin: -6px auto 0 50px;
+      padding: 20px 30px;
     }
-    .contenedor-logo img {
-      max-height: 100px;
-      height: auto;
-    }
-    main {
-      padding: 1rem 0;
-      text-align: center;
-    }
+
     h1 {
-      margin: 0.4rem 0 1rem;
-      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
       color: #2c3e50;
     }
-    .layout-doble {
+
+    /* === PC: LAYOUT FINAL === */
+    .contenedor-principal {
       display: flex;
-      gap: 2.5rem;
-      max-width: none;
-      margin: 0 auto;
-      padding: 1.5rem;
+      justify-content: space-between;
       align-items: flex-start;
+      gap: 2rem;
     }
-    .columna-izquierda {
-      flex: 0 0 52%;
-      display: grid;
+
+    .contenedor-miniaturas {
+      flex: 1;
+      text-align: center;
+    }
+
+    .grid-miniaturas {
+      display: inline-grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.8rem;
-      overflow-y: auto;
-      padding-right: 1rem;
-      justify-items: center;
+      row-gap: 100px;
+      column-gap: 120px;
     }
+
     .mini-auto {
       text-align: center;
       cursor: pointer;
-    }
-    .mini-auto img {
-      width: 8cm;
-      height: 5cm;
-      object-fit: cover;
-      border: 1px solid #000;
+      background: white;
+      padding: 4px;
       border-radius: 4px;
-      display: block;
     }
-    .mini-auto .nombre-auto {
-      margin-top: 0.5rem;
-      font-weight: bold;
-      font-size: 0.95rem;
+
+    .mini-auto img {
+      width: calc(100% + 13px);
+      height: 170px;
+      object-fit: contain;
+      border-radius: 4px;
+      margin-left: -11.5px;
+      margin-right: -11.5px;
+    }
+
+    .mini-auto .nombre-mini {
+      margin-top: 0.1rem;
+      font-size: 0.85rem;
       color: #2c3e50;
     }
-    .columna-derecha {
-      flex: 1;
+
+    .contenedor-carrusel {
+      width: 625px;
+      height: 475px;
+      margin-right: 220px; /* ← alinea con el logo */
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow: hidden;
-      padding-left: 1rem;
+      justify-content: flex-start;
     }
-    .contenedor-carrusel {
+
+    .auto-grande {
       width: 100%;
-      max-width: 500px;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      flex-shrink: 0;
-    }
-    .auto-imagen {
-      width: 16cm;
-      height: 10cm;
+      height: 320px;
       object-fit: contain;
-      border: 1px solid #000;
       border-radius: 8px;
-      opacity: 0;
-      transform: scale(0.98);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      margin-bottom: 15px;
     }
-    .auto-imagen.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .nombre-detalle {
+
+    .nombre-grande {
       font-weight: bold;
-      margin: 1rem 0 0.5rem;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #2c3e50;
+      margin-top: 20px;
+      text-align: center;
     }
+
     .caracteristicas {
-      margin-top: 0.5rem;
+      margin-top: 10px;
       padding: 1rem;
       background: #f9f9f9;
       border-radius: 8px;
       font-size: 0.95rem;
       line-height: 1.6;
       color: #555;
-      opacity: 0;
-      transition: opacity 0.6s ease 0.2s;
+      text-align: center;
+      width: 100%;
     }
-    .caracteristicas.visible {
-      opacity: 1;
-    }
+
     .indicadores {
-      margin-top: 1.5rem;
+      margin-top: 15px;
       display: flex;
       justify-content: center;
       gap: 0.6rem;
     }
+
     .circulo {
       width: 12px;
       height: 12px;
@@ -167,80 +168,146 @@
       cursor: pointer;
       transition: background 0.3s;
     }
+
     .circulo.activo {
       background: #d4af37;
     }
-    footer {
-      background: rgba(255, 255, 255, 0.85);
-      color: #666;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 900px) {
-      .layout-doble {
+
+    /* === CELULAR === */
+    @media (max-width: 768px) {
+      body {
+        background: white;
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        padding: 0;
       }
-      .columna-izquierda {
-        grid-template-columns: repeat(2, 1fr);
-        padding-right: 0;
+
+      .barra {
+        order: 1;
+        display: flex !important;
+        flex-direction: column;
+        width: 90% !important;
+        margin: 20px auto !important;
+        padding: 0 !important;
+        height: auto !important;
+        background: #000 !important;
+      }
+
+      .enlaces {
+        flex-direction: column;
         width: 100%;
       }
-      .columna-derecha {
-        padding-left: 0;
+
+      .enlaces a {
+        padding: 12px 0 !important;
+        text-align: center;
+        border-bottom: 1px solid #333;
+      }
+      .enlaces a:last-child {
+        border-bottom: none;
+      }
+
+      .logo-fuera {
+        order: 2;
+        position: static !important;
+        display: block;
+        margin: 20px auto;
+        height: 80px;
+        width: auto;
+      }
+
+      .hoja {
+        order: 3;
+        width: calc(100% - 40px) !important;
+        margin: 0 20px 20px !important;
+        padding: 20px;
+      }
+
+      .contenedor-principal,
+      .contenedor-carrusel,
+      .indicadores {
+        width: 100% !important;
+        margin: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      .grid-miniaturas {
+        grid-template-columns: repeat(2, 1fr) !important;
+        width: 100% !important;
+        row-gap: 2.5rem !important;
+        column-gap: 1.5rem !important;
+      }
+
+      .mini-auto img {
+        width: 100% !important;
+        height: 140px !important;
+        margin: 0 !important;
+      }
+
+      .auto-item-movil {
+        margin-bottom: 2.5rem;
+        text-align: center;
+      }
+
+      .auto-img-movil {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+      }
+
+      .auto-nombre-movil {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+      }
+
+      .auto-caracteristicas-movil {
+        color: #555;
+        line-height: 1.6;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Encabezado -->
-  <div class="encabezado-grid">
-    <div class="espacio-blanco"></div>
-    <div class="menu-negro">
-      <div class="menu-item">
-        <a href="acerca.html">Acerca de Nosotros</a>
-      </div>
-      <div class="menu-item">
-        <a href="servicios.html">Servicios y Tecnología</a>
-      </div>
-      <div class="menu-item">
-        <a href="flota.html">Presentación de Flota</a>
-      </div>
-      <div class="menu-item">
-        <a href="choferes.html">Capacitación de Choferes</a>
-      </div>
-      <div class="menu-item">
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-    <div class="contenedor-logo">
-      <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel">
+  <!-- Menú -->
+  <div class="barra">
+    <div class="enlaces">
+      <a href="acerca.html">Acerca de Nosotros</a>
+      <a href="servicios.html">Servicios y Tecnología</a>
+      <a href="flota.html">Presentación de Flota</a>
+      <a href="choferes.html">Capacitación de Choferes</a>
+      <a href="contacto.html">Contacto</a>
     </div>
   </div>
 
-  <!-- Contenido principal -->
-  <main>
+  <!-- Logo -->
+  <img src="Imagenes/luxcityviajes.png" alt="Lux City Travel" class="logo-fuera">
+
+  <!-- Contenido -->
+  <div class="hoja">
     <h1>Presentación de Flota</h1>
-    <div class="layout-doble">
-      <div class="columna-izquierda" id="lista-autos"></div>
-      <div class="columna-derecha">
-        <div class="contenedor-carrusel">
-          <img id="imagen-actual" class="auto-imagen" src="" alt="">
-          <div class="nombre-detalle" id="nombre-detalle"></div>
-          <div class="caracteristicas" id="caracteristicas"></div>
-          <div class="indicadores" id="indicadores"></div>
-        </div>
+
+    <div class="contenedor-principal">
+      <div class="contenedor-miniaturas">
+        <div class="grid-miniaturas" id="miniaturas"></div>
+      </div>
+
+      <div class="contenedor-carrusel">
+        <img id="auto-grande" class="auto-grande" src="" alt="">
+        <div id="nombre-grande" class="nombre-grande"></div>
+        <div id="caracteristicas" class="caracteristicas"></div>
+        <div class="indicadores" id="indicadores"></div>
       </div>
     </div>
-  </main>
 
-  <!-- ✅ Footer AL FINAL ABSOLUTO DEL DOCUMENTO -->
-  <footer>
-    <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
-  </footer>
+    <div id="lista-movil"></div>
+  </div>
 
-  <!-- Script -->
   <script>
     const flota = [
       {
@@ -270,7 +337,7 @@
       },
       {
         nombre: "Minivan Toyota Hiace Commuter",
-        imagen: "Imagenes/hiace-computer.jpg",
+        imagen: "Imagenes/hiace-commuter.jpg",
         caracteristicas: "• Motor 2.8L diésel<br>• Capacidad para 15 pasajeros<br>• Asientos reclinables<br>• Espacio para equipaje amplio"
       },
       {
@@ -278,41 +345,29 @@
         imagen: "Imagenes/foto003.jpg",
         caracteristicas: "Confort."
       }
-/*       {
-        nombre: "Foto 004",
-        imagen: "Imagenes/foto004.jpg",
-        caracteristicas: "Aquí se puede escribir algo de la foto."
-      },
-      {
-        nombre: "Foto 005",
-        imagen: "Imagenes/foto005.jpg",
-        caracteristicas: "Aquí se puede escribir algo de la foto."
-      } */
     ];
 
     let indiceActual = 0;
-    const listaAutos = document.getElementById('lista-autos');
-    const imgElement = document.getElementById('imagen-actual');
-    const nombreDetalle = document.getElementById('nombre-detalle');
-    const caracteristicasDiv = document.getElementById('caracteristicas');
-    const indicadoresDiv = document.getElementById('indicadores');
+    const esMovil = window.innerWidth <= 768;
 
-    function crearListaAutos() {
-      listaAutos.innerHTML = '';
+    if (!esMovil) {
+      const contenedorMini = document.getElementById('miniaturas');
+      const imgGrande = document.getElementById('auto-grande');
+      const nombreGrande = document.getElementById('nombre-grande');
+      const caractDiv = document.getElementById('caracteristicas');
+      const indicadoresDiv = document.getElementById('indicadores');
+
       flota.forEach((auto, i) => {
         const div = document.createElement('div');
         div.className = 'mini-auto';
         div.innerHTML = `
           <img src="${auto.imagen}" alt="${auto.nombre}">
-          <div class="nombre-auto">${auto.nombre}</div>
+          <div class="nombre-mini">${auto.nombre}</div>
         `;
         div.addEventListener('click', () => mostrarAuto(i));
-        listaAutos.appendChild(div);
+        contenedorMini.appendChild(div);
       });
-    }
 
-    function crearIndicadores() {
-      indicadoresDiv.innerHTML = '';
       flota.forEach((_, i) => {
         const circulo = document.createElement('div');
         circulo.className = 'circulo';
@@ -320,45 +375,43 @@
         circulo.addEventListener('click', () => mostrarAuto(i));
         indicadoresDiv.appendChild(circulo);
       });
-    }
 
-    function actualizarIndicadores() {
-      const circulos = indicadoresDiv.querySelectorAll('.circulo');
-      circulos.forEach((circulo, i) => {
-        circulo.classList.toggle('activo', i === indiceActual);
-      });
-    }
+      function actualizarIndicadores() {
+        document.querySelectorAll('.circulo').forEach((circulo, i) => {
+          circulo.classList.toggle('activo', i === indiceActual);
+        });
+      }
 
-    function mostrarAuto(indice) {
-      imgElement.classList.remove('visible');
-      nombreDetalle.style.opacity = '0';
-      caracteristicasDiv.classList.remove('visible');
-
-      setTimeout(() => {
+      function mostrarAuto(indice) {
         const auto = flota[indice];
-        imgElement.src = auto.imagen;
-        nombreDetalle.textContent = auto.nombre;
-        caracteristicasDiv.innerHTML = auto.caracteristicas;
-
-        imgElement.classList.add('visible');
-        nombreDetalle.style.opacity = '1';
-        caracteristicasDiv.classList.add('visible');
-
+        imgGrande.src = auto.imagen;
+        nombreGrande.textContent = auto.nombre;
+        caractDiv.innerHTML = auto.caracteristicas;
         indiceActual = indice;
         actualizarIndicadores();
-      }, 300);
-    }
+      }
 
-    function autoSiguiente() {
-      indiceActual = (indiceActual + 1) % flota.length;
-      mostrarAuto(indiceActual);
-    }
+      function autoSiguiente() {
+        indiceActual = (indiceActual + 1) % flota.length;
+        mostrarAuto(indiceActual);
+      }
 
-    crearListaAutos();
-    crearIndicadores();
-    mostrarAuto(0);
-    setInterval(autoSiguiente, 10000);
+      mostrarAuto(0);
+      setInterval(autoSiguiente, 10000);
+    } else {
+      const listaMovil = document.getElementById('lista-movil');
+      flota.forEach(auto => {
+        const div = document.createElement('div');
+        div.className = 'auto-item-movil';
+        div.innerHTML = `
+          <img src="${auto.imagen}" alt="${auto.nombre}" class="auto-img-movil">
+          <div class="auto-nombre-movil">${auto.nombre}</div>
+          <div class="auto-caracteristicas-movil">${auto.caracteristicas}</div>
+        `;
+        listaMovil.appendChild(div);
+      });
+    }
   </script>
-  <script  src="js/construccion.js"></script>
+
 </body>
 </html>
