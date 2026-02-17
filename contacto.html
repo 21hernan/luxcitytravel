@@ -13,7 +13,7 @@
       line-height: 1.6;
     }
 
-    /* === PC: diseño normal === */
+    /* === MENÚ === */
     .barra {
       background: #000;
       height: 40px;
@@ -48,6 +48,7 @@
       background: #333;
     }
 
+    /* === LOGO === */
     .logo-fuera {
       position: absolute;
       top: 12px;
@@ -55,102 +56,60 @@
       height: 110px;
     }
 
+    /* === HOJA BLANCA === */
     .hoja {
       background: white;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 30px;
-      margin-top: 20px;
-      margin-left: 50px;
-      margin-right: auto;
-      max-width: 600px;
+      width: calc((53% ) ); 
+
+      min-height: 400px;               /* ← doble de altura (ajustable) */
+      margin: 20px auto 0 50px;        /* ← espacio abajo de la barra */
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    h2 {
+    h1 {
       color: #2c3e50;
-      margin: 1.5rem 0 1rem;
-      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
       text-align: center;
     }
 
-    .datos-contacto {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 6px;
-      margin: 1.5rem 0;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 90px 1fr; /* etiqueta fija */
+      gap: 0.8rem 1rem;
       text-align: left;
+      width: 100%;
+      max-width: 400px;
     }
 
-    .datos-contacto p {
-      margin: 8px 0;
-      font-weight: 500;
-      color: #333;
+    .label {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
     }
 
-    footer {
+    .label::after {
+      content: " :"; 
+      margin-left: 0.3rem;
+    }
+
+    .value {
+      word-break: break-word;
+    }
+
+    .footer-copy {
+      margin-top: auto;
       text-align: center;
-      padding: 20px;
       color: #777;
-      margin-top: 40px;
+      font-size: 0.9rem;
+      padding-top: 20px;
       border-top: 1px solid #eee;
-    }
-
-    /* === CELULAR: menú → logo → contenido === */
-    @media (max-width: 768px) {
-      body {
-        background: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-      }
-
-      .barra {
-        order: 1;
-        display: flex !important;
-        flex-direction: column;
-        width: 90% !important;
-        margin: 20px auto !important;
-        padding: 0 !important;
-        height: auto !important;
-        background: #000 !important;
-      }
-
-      .enlaces {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .enlaces a {
-        padding: 12px 0 !important;
-        text-align: center;
-        border-bottom: 1px solid #333;
-      }
-      .enlaces a:last-child {
-        border-bottom: none;
-      }
-
-      .logo-fuera {
-        order: 2;
-        position: static !important;
-        display: block;
-        margin: 20px auto;
-        height: 80px;
-        width: auto;
-      }
-
-      .hoja {
-        order: 3;
-        margin: 0 20px 20px !important;
-        max-width: none;
-        width: calc(100% - 40px);
-      }
-
-      footer {
-        order: 4;
-        width: 100%;
-        margin-top: 20px !important;
-      }
+      width: 100%;
     }
   </style>
 </head>
@@ -172,18 +131,23 @@
 
   <!-- Contenido -->
   <div class="hoja">
-    <h2>Contacto</h2>
-    <div class="datos-contacto">
-      <p>📱 <strong>WhatsApp:</strong> +54 9 11 36846066</p>
-      <p>📞 <strong>Línea telefónica:</strong> +54 9 11 63806807</p>
-      <p>✉️ <strong>Email:</strong> Administracion@luxcitytravel.com</p>
-      <p>📸 <strong>Instagram:</strong> @Lux.City.Travel</p>
+    <h1>Contacto</h1>
+
+    <div class="contact-grid">
+      <div class="label">Teléfono</div>
+      <div class="value">+54 9 11 2345-6789</div>
+
+      <div class="label">Email </div>
+      <div class="value">administracion@luxcitytravel.com</div>
+
+      <div class="label">Email</div>
+      <div class="value">reservas@luxcitytravel.com</div>
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Lux City Travel. Todos los derechos reservados.
     </div>
   </div>
-
-  <footer>
-    <p>&copy; 2026 Lux City Travel. Todos los derechos reservados.</p>
-  </footer>
 
 </body>
 </html>
