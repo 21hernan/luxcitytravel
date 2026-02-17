@@ -77,7 +77,7 @@
       text-align: center;
     }
 
-    /* === CONTACTO — ALINEACIÓN EXACTA (PRE) === */
+    /* === CONTACTO — ALINEACIÓN EXACTA === */
     .contact-pre {
       font-family: 'Courier New', monospace;
       white-space: pre;
@@ -99,12 +99,16 @@
       width: 100%;
     }
 
-    /* === MENÚ EN MÓVIL — CONSISTENTE === */
+    /* === MENÚ EN MÓVIL — CONSISTENTE CON OTRAS PÁGINAS === */
     @media (max-width: 768px) {
       .barra {
+        display: flex !important;
+        flex-direction: column;
         width: 90%;
         margin: 20px auto 0;
         padding: 0;
+        background: #000;
+        height: auto;
       }
       .enlaces {
         flex-direction: column;
@@ -113,8 +117,13 @@
       .enlaces a {
         padding: 12px 0;
         text-align: center;
-        border-bottom: none;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
         display: block;
+        border-bottom: none;
+        transition: background 0.2s;
       }
       .enlaces a:hover {
         background: #333;
