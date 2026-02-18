@@ -130,7 +130,7 @@
         background: #333;
       }
 
-      /* Logo: mostrar en móvil, centrado arriba */
+      /* Logo: mostrar en móvil */
       .logo-fuera {
         position: static;
         display: block;
@@ -139,7 +139,7 @@
         width: auto;
       }
 
-      /* Hoja blanca: más pequeña, alineada a la izquierda */
+      /* Hoja blanca */
       .hoja {
         width: 85%;
         margin: 16px 0 0 0;
@@ -147,22 +147,23 @@
         align-items: flex-start;
       }
 
-      /* Contacto: reducir tamaño y permitir salto de línea en emails */
-      .contact-pre {
-        max-width: 360px;
-        font-size: 0.92rem;
-        line-height: 1.6;
+      /* Emails en dos líneas solo en móvil */
+      .contact-pre.pc {
+        display: none;
       }
-
-      /* Forzar salto en emails largos */
-      .contact-pre br {
-        display: inline;
+      .contact-pre.mobile {
+        display: block;
       }
 
       .footer-copy {
         text-align: left;
         font-size: 0.85rem;
       }
+    }
+
+    /* Por defecto: mostrar PC, ocultar móvil */
+    .contact-pre.mobile {
+      display: none;
     }
   </style>
 </head>
@@ -186,7 +187,17 @@
   <div class="hoja">
     <h1>Contacto</h1>
 
-    <div class="contact-pre">
+    <!-- Versión para PC -->
+    <div class="contact-pre pc">
+WhatsApp   : +54 9 11 3684-6066
+Teléfono   : +54 9 11 2345-6789
+Email      : administracion@luxcitytravel.com
+Email2     : reservas@luxcitytravel.com
+Instagram  : @Lux.City.Travel
+    </div>
+
+    <!-- Versión para móvil -->
+    <div class="contact-pre mobile">
 WhatsApp   : +54 9 11 3684-6066
 Teléfono   : +54 9 11 2345-6789
 Email      : administracion@
