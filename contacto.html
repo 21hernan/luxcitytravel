@@ -77,16 +77,30 @@
       text-align: center;
     }
 
-    /* === CONTACTO — ALINEACIÓN EXACTA === */
-    .contact-pre {
+    /* === CONTACTO — ALINEACIÓN EXACTA (PC) === */
+    .contact-pre.pc {
       font-family: 'Courier New', monospace;
-      white-space: pre-wrap;
+      white-space: pre;
       line-height: 1.7;
       text-align: left;
       margin: 0 auto;
-      max-width: 400px;
+      max-width: 420px;
       font-size: 1rem;
       color: #333;
+      display: block;
+    }
+
+    /* === CONTACTO — MÓVIL (2 líneas) === */
+    .contact-pre.mobile {
+      font-family: 'Courier New', monospace;
+      white-space: pre;
+      line-height: 1.7;
+      text-align: left;
+      margin: 0 auto;
+      max-width: 380px;
+      font-size: 0.92rem;
+      color: #333;
+      display: none;
     }
 
     .footer-copy {
@@ -99,9 +113,8 @@
       width: 100%;
     }
 
-    /* === MÓVIL — AJUSTES FINALES === */
+    /* === MÓVIL === */
     @media (max-width: 768px) {
-      /* Menú */
       .barra {
         display: flex !important;
         flex-direction: column;
@@ -129,8 +142,6 @@
       .enlaces a:hover {
         background: #333;
       }
-
-      /* Logo: mostrar en móvil */
       .logo-fuera {
         position: static;
         display: block;
@@ -138,32 +149,22 @@
         height: 80px;
         width: auto;
       }
-
-      /* Hoja blanca */
       .hoja {
         width: 85%;
         margin: 16px 0 0 0;
         padding: 24px 16px;
         align-items: flex-start;
       }
-
-      /* Emails en dos líneas solo en móvil */
       .contact-pre.pc {
         display: none;
       }
       .contact-pre.mobile {
         display: block;
       }
-
       .footer-copy {
         text-align: left;
         font-size: 0.85rem;
       }
-    }
-
-    /* Por defecto: mostrar PC, ocultar móvil */
-    .contact-pre.mobile {
-      display: none;
     }
   </style>
 </head>
@@ -187,7 +188,7 @@
   <div class="hoja">
     <h1>Contacto</h1>
 
-    <!-- Versión para PC -->
+    <!-- PC: una línea -->
     <div class="contact-pre pc">
 WhatsApp   : +54 9 11 3684-6066
 Teléfono   : +54 9 11 2345-6789
@@ -196,7 +197,7 @@ Email2     : reservas@luxcitytravel.com
 Instagram  : @Lux.City.Travel
     </div>
 
-    <!-- Versión para móvil -->
+    <!-- Móvil: dos líneas -->
     <div class="contact-pre mobile">
 WhatsApp   : +54 9 11 3684-6066
 Teléfono   : +54 9 11 2345-6789
