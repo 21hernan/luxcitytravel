@@ -80,11 +80,11 @@
     /* === CONTACTO — ALINEACIÓN EXACTA === */
     .contact-pre {
       font-family: 'Courier New', monospace;
-      white-space: pre;
-      line-height: 1.8;
+      white-space: pre-wrap;
+      line-height: 1.7;
       text-align: left;
       margin: 0 auto;
-      max-width: 420px;
+      max-width: 400px;
       font-size: 1rem;
       color: #333;
     }
@@ -99,7 +99,7 @@
       width: 100%;
     }
 
-    /* === MÓVIL: ajustes específicos === */
+    /* === MÓVIL — AJUSTES FINALES === */
     @media (max-width: 768px) {
       /* Menú */
       .barra {
@@ -130,28 +130,38 @@
         background: #333;
       }
 
-      /* Logo: ocultar en móvil */
+      /* Logo: mostrar en móvil, centrado arriba */
       .logo-fuera {
-        display: none;
+        position: static;
+        display: block;
+        margin: 0 auto 20px;
+        height: 80px;
+        width: auto;
       }
 
-      /* Hoja blanca: alinear a la izquierda, ancho reducido */
+      /* Hoja blanca: más pequeña, alineada a la izquierda */
       .hoja {
-        width: 90%;
-        margin: 20px 0 0 0;       /* ← sin margin-left: 50px */
-        padding: 30px 20px;
-        align-items: flex-start;   /* ← clave: alinea contenido a la izquierda */
+        width: 85%;
+        margin: 16px 0 0 0;
+        padding: 24px 16px;
+        align-items: flex-start;
       }
 
-      /* Contacto */
+      /* Contacto: reducir tamaño y permitir salto de línea en emails */
       .contact-pre {
-        max-width: 380px;
-        font-size: 0.95rem;
+        max-width: 360px;
+        font-size: 0.92rem;
+        line-height: 1.6;
       }
 
-      /* Footer */
+      /* Forzar salto en emails largos */
+      .contact-pre br {
+        display: inline;
+      }
+
       .footer-copy {
         text-align: left;
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -179,8 +189,10 @@
     <div class="contact-pre">
 WhatsApp   : +54 9 11 3684-6066
 Teléfono   : +54 9 11 2345-6789
-Email      : administracion@luxcitytravel.com
-Email2     : reservas@luxcitytravel.com
+Email      : administracion@
+             luxcitytravel.com
+Email2     : reservas@
+             luxcitytravel.com
 Instagram  : @Lux.City.Travel
     </div>
 
