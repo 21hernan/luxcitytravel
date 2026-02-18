@@ -118,7 +118,7 @@
     .contenedor-carrusel {
       width: 625px;
       height: 475px;
-      margin-right: 220px; /* ← alinea con el logo */
+      margin-right: 220px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -230,6 +230,11 @@
         width: 100% !important;
         margin: 0 !important;
         margin-right: 0 !important;
+      }
+
+      /* ✅ OCULTAR CARRUSEL EN MÓVIL */
+      .contenedor-carrusel {
+        display: none;
       }
 
       .grid-miniaturas {
