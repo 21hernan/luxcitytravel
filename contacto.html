@@ -99,8 +99,9 @@
       width: 100%;
     }
 
-    /* === MENÚ EN MÓVIL — CONSISTENTE CON OTRAS PÁGINAS === */
+    /* === MÓVIL: ajustes específicos === */
     @media (max-width: 768px) {
+      /* Menú */
       .barra {
         display: flex !important;
         flex-direction: column;
@@ -128,9 +129,29 @@
       .enlaces a:hover {
         background: #333;
       }
+
+      /* Logo: ocultar en móvil */
+      .logo-fuera {
+        display: none;
+      }
+
+      /* Hoja blanca: alinear a la izquierda, ancho reducido */
       .hoja {
         width: 90%;
+        margin: 20px 0 0 0;       /* ← sin margin-left: 50px */
         padding: 30px 20px;
+        align-items: flex-start;   /* ← clave: alinea contenido a la izquierda */
+      }
+
+      /* Contacto */
+      .contact-pre {
+        max-width: 380px;
+        font-size: 0.95rem;
+      }
+
+      /* Footer */
+      .footer-copy {
+        text-align: left;
       }
     }
   </style>
